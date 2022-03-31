@@ -103,7 +103,11 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
                 var content = await request.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<AssetDTO>>(content);
             }
-            return null;
+            else
+            {
+                return null;
+            }
+           
         }
 
         public async Task<AssetDTO> GetAssetByIDAsync(int assetID)
@@ -115,7 +119,11 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
                 var content = await request.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<AssetDTO>(content);
             }
-            return null;
+            else
+            {
+                return null;
+            }
+            
         }
     }
 }

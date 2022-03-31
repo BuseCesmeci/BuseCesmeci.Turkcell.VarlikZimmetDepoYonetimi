@@ -21,7 +21,7 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\\MSSQLLocalDB;DataBase=AssetStoreManagment;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=.;DataBase=AssetStoreManagment;Integrated Security=True");
         }
 
         public DbSet<ActionStatus> ActionStatus { get; set; }

@@ -38,7 +38,7 @@ namespace VarlikZimmetDepoYonetimi.API
         {
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
          //   services.AddDbContext<AuthContext>(a => a.UseSqlServer(Configuration.GetConnectionString("DefaultConn")));           
-            services.AddDbContext<AssetStoreManagmentContext>(options=> options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB; DataBase = AssetStoreManagment; Integrated Security = True"));
+            services.AddDbContext<AssetStoreManagmentContext>(options=> options.UseSqlServer($"Data Source=.; DataBase = AssetStoreManagment; Integrated Security = True"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

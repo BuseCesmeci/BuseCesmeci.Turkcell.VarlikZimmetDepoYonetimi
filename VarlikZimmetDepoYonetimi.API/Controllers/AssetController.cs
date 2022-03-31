@@ -32,20 +32,23 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         }
 
         [HttpGet("{assetID}")]
-        public async Task<IActionResult> GETAsync(int assetID)
+        public async Task<IActionResult> GetByIdAsync(int assetID)
         {
             try
             {
-                AssetDTO assetDto = _mapper.Map<AssetDTO>(await _assetDal.GetAsync(x => x.AssetID == assetID));
 
-                if (assetDto == null)
-                {
-                   return NotFound($"{assetID} e ait veri bulunamadı..");
-                }
-                else
-                {
-                    return Ok(assetDto);
-                }
+                var asset = await _assetDal.GetByIdAsync(assetID);
+                var assetDto = _mapper.Map<AssetDTO>(asset);
+                return Ok(assetDto);
+                //var assetDto = await _mapper.Map<Asset>( _assetDal.GetByIdAsync(x => x.AssetID == assetID));
+                //if (assetDto == null)
+                //{
+                //   return NotFound($"{assetID} e ait veri bulunamadı..");
+                //}
+                //else
+                //{
+                //    return Ok(assetDto);
+                //}
                 
             }
             catch (Exception ex)
@@ -54,37 +57,37 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             }            
         }
 
+        [HttpPost]
+        [Route("~/api/addasset")]
+        public async Task<IActionResult> ADDAsync([FromBody] AssetDTO assetDto)
+        {
+            try
+            {
+                await _assetDal.AddAsync(_mapper.Map<Asset>(assetDto));
+                return new StatusCodeResult(201);
+            }
+            catch (Exception ex)
+            {                
+            }
+            return BadRequest();
+        }
+
         //[HttpPost]
         //[Route("~/api/addasset")]
-        //public async Task<IActionResult> ADDAsync([FromBody] AssetDTO assetDto)
+        //public IActionResult ADD([FromBody] AssetDTO assetDto)
         //{
         //    try
         //    {
-        //        await _assetDal.AddAsync(_mapper.Map<Asset>(assetDto));
+        //        _assetDal.Add(_mapper.Map<Asset>(assetDto));
+               
         //        return new StatusCodeResult(201);
         //    }
         //    catch (Exception ex)
         //    {
-        //        return BadRequest(ex);
+               
         //    }
+        //    return BadRequest();
         //}
-
-        [HttpPost]
-        [Route("~/api/addasset")]
-        public IActionResult ADD([FromBody] AssetDTO assetDto)
-        {
-            try
-            {
-                _assetDal.Add(_mapper.Map<Asset>(assetDto));
-               
-                return new StatusCodeResult(201);
-            }
-            catch (Exception ex)
-            {
-               
-            }
-            return BadRequest();
-        }
 
 
         [HttpPut]
@@ -100,6 +103,21 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             {
                 return BadRequest(ex);
             }          
+        }
+
+        [HttpPost("assetID")]
+        public async Task<IActionResult> SOFTDeleteAsync(int id)
+        {
+            try
+            {           // bakılacak yanlış
+
+                await _assetDal.UpdateAsync(_mapper.Map<Asset>(id));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("assetID")]
