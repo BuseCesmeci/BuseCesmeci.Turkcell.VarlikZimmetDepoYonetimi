@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VarlikZimmetDepoYonetimi.API", "VarlikZimmetDepoYonetimi.API\VarlikZimmetDepoYonetimi.API.csproj", "{D20D741D-5474-4BD4-A271-EEC047DC6856}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VarlikZimmetDepoYonetimi.UI", "VarlikZimmetDepoYonetimi.UI\VarlikZimmetDepoYonetimi.UI.csproj", "{4D493531-14D7-452B-923D-51E85BEC9EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarlikZimmetDepoYonetimi.Core", "VarlikZimmetDepoYonetimi.Core\VarlikZimmetDepoYonetimi.Core.csproj", "{ADAEA421-B916-4A60-82D6-A0565BC53BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarlikZimmetDepoYonetimi.Data", "VarlikZimmetDepoYonetimi.Data\VarlikZimmetDepoYonetimi.Data.csproj", "{977649E9-5D12-40F5-9EFB-6A91ED923989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarlikZimmetDepoYonetimi.Service", "VarlikZimmetDepoYonetimi.Service\VarlikZimmetDepoYonetimi.Service.csproj", "{6CF5CECA-3709-48FB-A2E3-C9073BEC8C4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D20D741D-5474-4BD4-A271-EEC047DC6856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20D741D-5474-4BD4-A271-EEC047DC6856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20D741D-5474-4BD4-A271-EEC047DC6856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20D741D-5474-4BD4-A271-EEC047DC6856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D493531-14D7-452B-923D-51E85BEC9EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D493531-14D7-452B-923D-51E85BEC9EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D493531-14D7-452B-923D-51E85BEC9EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D493531-14D7-452B-923D-51E85BEC9EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADAEA421-B916-4A60-82D6-A0565BC53BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADAEA421-B916-4A60-82D6-A0565BC53BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADAEA421-B916-4A60-82D6-A0565BC53BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADAEA421-B916-4A60-82D6-A0565BC53BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977649E9-5D12-40F5-9EFB-6A91ED923989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977649E9-5D12-40F5-9EFB-6A91ED923989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977649E9-5D12-40F5-9EFB-6A91ED923989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977649E9-5D12-40F5-9EFB-6A91ED923989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF5CECA-3709-48FB-A2E3-C9073BEC8C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF5CECA-3709-48FB-A2E3-C9073BEC8C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF5CECA-3709-48FB-A2E3-C9073BEC8C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF5CECA-3709-48FB-A2E3-C9073BEC8C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCF71181-2047-47D1-8E42-1084B17F918D}
+	EndGlobalSection
+EndGlobal

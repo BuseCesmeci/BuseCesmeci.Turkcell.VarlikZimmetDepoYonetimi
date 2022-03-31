@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ActionPage.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+<form asp-action="AssignToStorage" asp-controller="Action">
+    <div class="container py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary mt-3">Depoya Ata</h5>
+                            <label class="card-title my-2">Açıklama</label>
+                            <textarea class="form-control" style="height:300px"></textarea>
+                            <br />
+                            <input type="submit" value="Depoya Ata" class="btn btn-primary mt-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>
