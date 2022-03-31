@@ -21,12 +21,12 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         //    return View();
         //}
         [HttpPost]
-        public IActionResult ChangePassword()
+        public IActionResult ChangePassword() // sifre degistir
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Register()
+        public IActionResult Register() // kayit ol
         {
             return View();
         }

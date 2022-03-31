@@ -8,14 +8,14 @@ using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 
 namespace VarlikZimmetDepoYonetimi.UI.Provider
 {
-    public class TokenProvider
+    public class TokenProvider // Login
     {
         HttpClient _client;
         public TokenProvider(HttpClient client)
         {
             _client = client;
         }
-        public async Task<string> TokenAl(string kullaniciAdi, string sifre)
+        public async Task<string> Token(string kullaniciAdi, string sifre)
         {
             StringContent mycontent = new StringContent(JsonConvert.SerializeObject(new LoginDTO()
             {
