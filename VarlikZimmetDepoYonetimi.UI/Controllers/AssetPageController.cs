@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 using VarlikZimmetDepoYonetimi.UI.Provider;
@@ -20,18 +21,28 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> AddAsset() 
+        {
+            var value = await _assetProvider.GetAssetAsync();
+            return View(new AssetDTO());
+        } 
+
         [HttpPost]
         public async Task<IActionResult> AddAsset(AssetDTO assetDto) // varlık ekle -yeni kayıt-
         {
+            //assetDto.CreateDate = DateTime.Now;
+            //assetDto.ModifiedDate = DateTime.Now;
+            assetDto.RetireDate = DateTime.Now;
             await _assetProvider.AddAsync(assetDto);
-            return Redirect("Index");
+            return View();
         }
-        [HttpPost]
+       // [HttpPost]
         public IActionResult AddAssetWithoutBarcode() // barkodsuz varlık ekle -yeni kayıt- 
         {
             return View();
         }
-        [HttpPost]
+       // [HttpPost]
         public async Task<IActionResult> MyAsset(int personelID) // varlıklarım
         {
             await _assetProvider.GetAssetByIDAsync(personelID);

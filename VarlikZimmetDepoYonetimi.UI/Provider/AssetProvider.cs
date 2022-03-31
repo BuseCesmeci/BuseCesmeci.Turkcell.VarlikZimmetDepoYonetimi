@@ -70,7 +70,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             string result = "";
             try
             {
-                var responseValue = await _client.PutAsync("updateproducts", jsonConversion);
+                var responseValue = await _client.PutAsync("updateasset", jsonConversion);
                 if (responseValue.IsSuccessStatusCode)
                 {
                     result = "Işlem tamamlandı.";
