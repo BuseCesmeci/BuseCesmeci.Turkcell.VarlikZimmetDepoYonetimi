@@ -106,12 +106,12 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         }
 
         [HttpPost("assetID")]
-        public async Task<IActionResult> SOFTDeleteAsync(int id)
+        public async Task<IActionResult> SOFTDeleteAsync(int assetID)
         {
             try
             {           // bakılacak yanlış
 
-                await _assetDal.UpdateAsync(_mapper.Map<Asset>(id));
+                await _assetDal.UpdateAsync(_mapper.Map<Asset>(assetID));
                 return Ok();
             }
             catch (Exception ex)

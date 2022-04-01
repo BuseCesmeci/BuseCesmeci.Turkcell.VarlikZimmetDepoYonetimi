@@ -29,6 +29,7 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
         public DbSet<AppPageProcessClaim> AppPageProcessClaim { get; set; }
         public DbSet<Asset> Asset { get; set; }
         public DbSet<AssetAction> AssetAction { get; set; }
+        public DbSet<AssetActionOptions> AssetActionOptions { get; set; }
         public DbSet<AssetBarcode> AssetBarcode { get; set; }
         public DbSet<AssetCustomer> AssetCustomer { get; set; }
         public DbSet<AssetGroup> AssetGroup { get; set; }
