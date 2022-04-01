@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
+using VarlikZimmetDepoYonetimi.UI.Models.VM;
 
 namespace VarlikZimmetDepoYonetimi.UI.Provider
 {
@@ -20,6 +21,28 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
         public async Task<string> AddAsync(AssetDTO assetDto)
         {
             var jsonConversion = new StringContent(JsonConvert.SerializeObject(assetDto));
+            jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            string result = "";
+            try
+            {
+                var responsePostValue = await _client.PostAsync("addasset", jsonConversion);
+                if (responsePostValue.IsSuccessStatusCode)
+                {
+                    await responsePostValue.Content.ReadAsStringAsync();
+                }
+                result = "Işlem tamamlandı.";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
+        public async Task<string> AddVMAsync(AssetDetailListVM alvm)
+        {
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(alvm));
             jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             string result = "";
@@ -109,6 +132,22 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
            
         }
+        public async Task<DropDownLoadDTO> GetAssetDetailAsync()
+        {
+            var request = await _client.GetAsync("assetdetail");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<DropDownLoadDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
 
         public async Task<AssetDTO> GetAssetByIDAsync(int assetID)
         {
@@ -125,5 +164,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
             
         }
+
+
     }
 }

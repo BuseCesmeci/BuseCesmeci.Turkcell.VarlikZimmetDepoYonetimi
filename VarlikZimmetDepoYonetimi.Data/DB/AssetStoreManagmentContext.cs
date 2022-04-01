@@ -12,12 +12,10 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
     {
         public AssetStoreManagmentContext()
         {
-
         }
 
         public AssetStoreManagmentContext(DbContextOptions options) :base(options)
-        {
-            
+        {            
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

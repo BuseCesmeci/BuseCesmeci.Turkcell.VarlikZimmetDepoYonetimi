@@ -22,6 +22,17 @@ namespace VarlikZimmetDepoYonetimi.Service.Mapping
 
             CreateMap<Personnel, PersonnelDTO>();
             CreateMap<PersonnelDTO, Personnel>();
+
+            CreateMap<Currency, CurrencyDTO>();
+            CreateMap<CurrencyDTO, Currency>();
+
+            CreateMap<AssetType, AssetTypeDTO>();
+            CreateMap<AssetTypeDTO, AssetType>();
+
+            CreateMap<BrandModel, BrandModelDTO>();
+            CreateMap<BrandModelDTO, BrandModel>();
+
+
         }
     }
 }
