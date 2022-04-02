@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 {
-    public class BrandModelDTO
+    public class BrandModelDTO : BaseDTO
     {
         public int BrandModelID { get; set; }
         public int UpperBrandModelID { get; set; }

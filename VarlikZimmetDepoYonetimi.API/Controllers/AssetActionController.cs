@@ -35,6 +35,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             _assetCustomerDal = assetCustomerDal;
             _customerDal = customerDal;
             _commentDal = commentDal;
+            _companyDal = companyDal;
             _mapper = mapper;
         }
 
