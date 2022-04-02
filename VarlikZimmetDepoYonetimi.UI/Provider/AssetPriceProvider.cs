@@ -8,40 +8,24 @@ using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 
 namespace VarlikZimmetDepoYonetimi.UI.Provider
 {
-    public class AssetTypeProvider
+    public class AssetPriceProvider
     {
-        HttpClient _client;
+        private readonly HttpClient _client;
 
-        public AssetTypeProvider(HttpClient client)
+        public AssetPriceProvider(HttpClient client)
         {
             _client = client;
         }
 
-        public async Task<List<AssetTypeDTO>> GetAssetAsync()
+        public async Task<string> AddAssetPriceAsync(PriceDTO priceDto)
         {
-            var request = await _client.GetAsync("assettype");
-
-            if (request.IsSuccessStatusCode)
-            {
-                var content = await request.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<AssetTypeDTO>>(content);
-            }
-            else
-            {
-                return null;
-            }
-
-        }
-
-        public async Task<string> AddAsync(AssetTypeDTO assetTypeDto)
-        {
-            var jsonConversion = new StringContent(JsonConvert.SerializeObject(assetTypeDto));
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(priceDto));
             jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             string result = "";
             try
             {
-                var responsePostValue = await _client.PostAsync("addassettype", jsonConversion);
+                var responsePostValue = await _client.PostAsync("addassetprice", jsonConversion);
                 if (responsePostValue.IsSuccessStatusCode)
                 {
                     await responsePostValue.Content.ReadAsStringAsync();
@@ -56,15 +40,30 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             return result;
         }
 
-        public async Task<string> UpdateAssetTypeAsync(AssetTypeDTO assetTypeDto)
+        public async Task<PriceDTO> GetAssetPriceAsync()
         {
-            var jsonConversion = new StringContent(JsonConvert.SerializeObject(assetTypeDto));
+            var request = await _client.GetAsync("assetprice");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<PriceDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<string> UpdateAssetPriceAsync(PriceDTO priceDto)
+        {
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(priceDto));
             jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             string result = "";
             try
             {
-                var responseValue = await _client.PutAsync("updateassettype", jsonConversion);
+                var responseValue = await _client.PutAsync("updateassetprice", jsonConversion);
                 if (responseValue.IsSuccessStatusCode)
                 {
                     result = "Işlem tamamlandı.";

@@ -13,31 +13,31 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssetTypeController : ControllerBase
+    public class AssetPriceController : ControllerBase
     {
-        IAssetTypeDAL _assetTypeDal;
+        IPriceDAL _priceDal;
         IMapper _mapper;
 
-        public AssetTypeController(IAssetTypeDAL assetTypeDal, IMapper mapper)
+        public AssetPriceController(IPriceDAL priceDAL, IMapper mapper)
         {
-            _assetTypeDal = assetTypeDal;
+            _priceDal = priceDAL;
             _mapper = mapper;
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAssetPriceAsync()
         {
-            var value = await _assetTypeDal.GetAllAsync(x => x.isActive == true);
-            return Ok(_mapper.Map<IEnumerable<AssetTypeDTO>>(value));
+            var value = await _priceDal.GetAllAsync(x => x.isActive == true);
+            return Ok(_mapper.Map<IEnumerable<PriceDTO>>(value));
         }
 
         [HttpPost]
-        [Route("~/api/addassettype")]
-        public async Task<IActionResult> ADDAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/addassetprice")]
+        public async Task<IActionResult> AddAssetPriceAsync([FromBody] PriceDTO priceDto)
         {
             try
             {
-                await _assetTypeDal.AddAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _priceDal.AddAsync(_mapper.Map<Price>(priceDto));
                 return new StatusCodeResult(201);
             }
             catch (Exception ex)
@@ -45,14 +45,14 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             }
             return BadRequest();
         }
-
+        
         [HttpPut]
-        [Route("~/api/updateassettype")]
-        public async Task<IActionResult> UpdateAssetTypeAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/updateassetprice")]
+        public async Task<IActionResult> UpdateAssetPriceAsync([FromBody] PriceDTO priceDto)
         {
             try
             {
-                await _assetTypeDal.UpdateAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _priceDal.UpdateAsync(_mapper.Map<Price>(priceDto));
                 return new StatusCodeResult(200);
             }
             catch (Exception ex)

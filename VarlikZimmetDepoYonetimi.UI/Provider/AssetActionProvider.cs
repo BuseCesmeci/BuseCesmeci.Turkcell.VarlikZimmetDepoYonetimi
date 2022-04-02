@@ -27,7 +27,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             string result = "";
             try
             {
-                var responsePostValue = await _client.PostAsync("addassetstatus", jsonConversion);
+                var responsePostValue = await _client.PostAsync("addassetstatusaction", jsonConversion);
                 if (responsePostValue.IsSuccessStatusCode)
                 {
                     await responsePostValue.Content.ReadAsStringAsync();
@@ -67,10 +67,9 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             return result;
         }
 
-
-        public async Task<AssetOwnerDTO> GetAssetDetailAsync()
+        public async Task<AssetOwnerDTO> GetAssetOwnerAsync()
         {
-            var request = await _client.GetAsync("asset");
+            var request = await _client.GetAsync("assetaction");
 
             if (request.IsSuccessStatusCode)
             {
@@ -83,11 +82,26 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
         }
 
+        public async Task<AssetActionOptionsDTO> GetActionOptionAsync()
+        {
+            var request = await _client.GetAsync("assetaction");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AssetActionOptionsDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // DEPOYA ATA
 
         public async Task<CompanyDTO> GetCompanyAsync()
         {
-            var request = await _client.GetAsync("asset");
+            var request = await _client.GetAsync("assetaction");
 
             if (request.IsSuccessStatusCode)
             {
@@ -127,7 +141,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
 
         public async Task<CustomerDTO> GetCustomerAsync()
         {
-            var request = await _client.GetAsync("asset");
+            var request = await _client.GetAsync("assetaction");
 
             if (request.IsSuccessStatusCode)
             {

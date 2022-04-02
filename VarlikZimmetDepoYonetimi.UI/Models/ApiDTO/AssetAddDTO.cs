@@ -12,11 +12,13 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 
         public List<BrandModelDTO> Brand { get; set; }
         public int SelectedBrand { get; set; }
+
         public List<BrandModelDTO> Model { get; set; }
         public int SelectedModel { get; set; }
 
         public List<CurrencyDTO> Currency { get; set; }
         public int SelectedCurrency { get; set; }
+
         public int AssetID { get; set; }
         public string RegistrationNumber { get; set; }
         public decimal Cost { get; set; }

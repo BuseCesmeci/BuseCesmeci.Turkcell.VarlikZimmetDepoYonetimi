@@ -13,31 +13,31 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssetTypeController : ControllerBase
+    public class AssetStatusController : ControllerBase
     {
-        IAssetTypeDAL _assetTypeDal;
+        IAssetStatusDAL _assetStatusDal;
         IMapper _mapper;
 
-        public AssetTypeController(IAssetTypeDAL assetTypeDal, IMapper mapper)
+        public AssetStatusController(IAssetStatusDAL assetStatusDAL, IMapper mapper )
         {
-            _assetTypeDal = assetTypeDal;
+            _assetStatusDal = assetStatusDAL;
             _mapper = mapper;
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAssetStatusAsync()
         {
-            var value = await _assetTypeDal.GetAllAsync(x => x.isActive == true);
-            return Ok(_mapper.Map<IEnumerable<AssetTypeDTO>>(value));
+            var value = await _assetStatusDal.GetAllAsync(x => x.isActive == true);
+            return Ok(_mapper.Map<IEnumerable<AssetStatusDTO>>(value));
         }
 
         [HttpPost]
-        [Route("~/api/addassettype")]
-        public async Task<IActionResult> ADDAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/addassetstatus")]
+        public async Task<IActionResult> AddAssetStatusAsync([FromBody] AssetStatusDTO assetStatusDto)
         {
             try
             {
-                await _assetTypeDal.AddAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _assetStatusDal.AddAsync(_mapper.Map<AssetStatus>(assetStatusDto));
                 return new StatusCodeResult(201);
             }
             catch (Exception ex)
@@ -46,13 +46,14 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             return BadRequest();
         }
 
+       
         [HttpPut]
-        [Route("~/api/updateassettype")]
-        public async Task<IActionResult> UpdateAssetTypeAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/updateassetstatus")]
+        public async Task<IActionResult> UpdateAssetStatusAsync([FromBody] AssetStatusDTO assetStatusDto)
         {
             try
             {
-                await _assetTypeDal.UpdateAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _assetStatusDal.UpdateAsync(_mapper.Map<AssetStatus>(assetStatusDto));
                 return new StatusCodeResult(200);
             }
             catch (Exception ex)

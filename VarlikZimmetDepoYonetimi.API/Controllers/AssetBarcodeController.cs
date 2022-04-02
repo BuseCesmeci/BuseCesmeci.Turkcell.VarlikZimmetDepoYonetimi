@@ -13,31 +13,32 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssetTypeController : ControllerBase
+    public class AssetBarcodeController : ControllerBase
     {
-        IAssetTypeDAL _assetTypeDal;
+        IAssetBarcodeDAL _assetBarcodeDal;
         IMapper _mapper;
 
-        public AssetTypeController(IAssetTypeDAL assetTypeDal, IMapper mapper)
+        public AssetBarcodeController(IAssetBarcodeDAL assetBarcodeDAL, IMapper mapper)
         {
-            _assetTypeDal = assetTypeDal;
+            _assetBarcodeDal = assetBarcodeDAL;
             _mapper = mapper;
         }
 
+
         [HttpGet("")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAssetBarcodeAsync()
         {
-            var value = await _assetTypeDal.GetAllAsync(x => x.isActive == true);
-            return Ok(_mapper.Map<IEnumerable<AssetTypeDTO>>(value));
+            var value = await _assetBarcodeDal.GetAllAsync(x => x.isActive == true);
+            return Ok(_mapper.Map<IEnumerable<AssetBarcodeDTO>>(value));
         }
 
         [HttpPost]
-        [Route("~/api/addassettype")]
-        public async Task<IActionResult> ADDAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/addassetbarcode")]
+        public async Task<IActionResult> AddAssetBarcodeAsync([FromBody] AssetBarcodeDTO assetBarcodeDto)
         {
             try
             {
-                await _assetTypeDal.AddAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _assetBarcodeDal.AddAsync(_mapper.Map<AssetBarcode>(assetBarcodeDto));
                 return new StatusCodeResult(201);
             }
             catch (Exception ex)
@@ -45,14 +46,15 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             }
             return BadRequest();
         }
+        
 
         [HttpPut]
-        [Route("~/api/updateassettype")]
-        public async Task<IActionResult> UpdateAssetTypeAsync([FromBody] AssetTypeDTO assetTypeDto)
+        [Route("~/api/updateassetbarcode")]
+        public async Task<IActionResult> UpdateBarcodeAsync([FromBody] AssetBarcodeDTO assetBarcodeDto)
         {
             try
             {
-                await _assetTypeDal.UpdateAsync(_mapper.Map<AssetType>(assetTypeDto));
+                await _assetBarcodeDal.UpdateAsync(_mapper.Map<AssetBarcode>(assetBarcodeDto));
                 return new StatusCodeResult(200);
             }
             catch (Exception ex)
@@ -60,6 +62,5 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
                 return BadRequest(ex);
             }
         }
-
     }
 }
