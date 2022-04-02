@@ -63,6 +63,18 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             request.RegistrationNumber = assetVm.RegistrationNumber;
             request.RetireDate  = DateTime.Now;
 
+            //var barcode = new AssetBarcodeDTO();
+            //barcode.AssetID = assetVm.AssetID;
+            //barcode.Barcode = assetVm.Barcode;
+
+            //var price = new PriceDTO();
+            //price.AssetID = assetVm.AssetID;
+            //price.AssetPrice = assetVm.AssetPrice;
+
+            //var status = new AssetStatusDTO();
+            //status.AssetID = assetVm.AssetID;
+            //status.StatuID = 1;
+
             await _assetProvider.AddVMAsync(request);
             return View(assetVm);
            

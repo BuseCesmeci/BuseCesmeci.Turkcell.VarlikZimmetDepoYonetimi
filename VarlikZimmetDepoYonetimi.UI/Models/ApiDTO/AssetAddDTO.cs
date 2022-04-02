@@ -23,6 +23,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
         public string RegistrationNumber { get; set; }
         public decimal Cost { get; set; }
         public int? AssetBarcodeID { get; set; }
+        public string Barcode { get; set; }
         public string Description { get; set; }
         public DateTime? RetireDate { get; set; }
         public int PriceID { get; set; }

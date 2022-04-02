@@ -3,19 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 using VarlikZimmetDepoYonetimi.UI.Provider;
 
 namespace VarlikZimmetDepoYonetimi.UI.Controllers
 {
     public class ActionController : Controller
     {
-        AssetProvider _assetProvider;
+        CommentProvider _commentProvider;
 
-        public ActionController(AssetProvider assetProvider)
+        public ActionController(CommentProvider commentProvider)
         {
-            _assetProvider = assetProvider;
+            _commentProvider = commentProvider;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -42,7 +42,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             return View();
         }
        // [HttpPost]
-        public IActionResult Abort() // iptal et
+        public IActionResult Abort() // iptal et 
         {
             return View();
         }
@@ -61,10 +61,18 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         {
             return View();
         }
-       // [HttpPost]
-        public IActionResult AddComment() // yorum ekle  
-        {
+
+        public async Task<IActionResult> AddComment() // yorum ekle  
+        {            
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(CommentDTO commentDto) // yorum ekle  
+        {
+           await _commentProvider.AddCommentAsync(commentDto);
+
+            return View(commentDto);
         }
     }
 }

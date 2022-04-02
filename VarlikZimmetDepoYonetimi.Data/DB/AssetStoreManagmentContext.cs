@@ -32,6 +32,7 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
         public DbSet<AssetCustomer> AssetCustomer { get; set; }
         public DbSet<AssetGroup> AssetGroup { get; set; }
         public DbSet<AssetOwner> AssetOwner { get; set; }
+        public DbSet<AssetStatus> AssetStatus { get; set; }
         public DbSet<AssetType> AssetType { get; set; }
         public DbSet<AssetWithoutBarcode> AssetWithoutBarcode { get; set; }
         public DbSet<BrandModel> BrandModel { get; set; }

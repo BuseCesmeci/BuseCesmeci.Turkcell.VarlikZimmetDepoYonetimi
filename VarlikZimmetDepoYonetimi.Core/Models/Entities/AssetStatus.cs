@@ -11,9 +11,9 @@ namespace VarlikZimmetDepoYonetimi.Core.Models.Entities
     {
         [Key]
         public int AssetStatusID { get; set; }
-        public int AssetID { get; set; }
-        public int PersonnelID { get; set; }
-        public int StatuID { get; set; }
+        public int? AssetID { get; set; }
+        public int? PersonnelID { get; set; }
+        public int? StatuID { get; set; }
         public string Note { get; set; }
     }
 }

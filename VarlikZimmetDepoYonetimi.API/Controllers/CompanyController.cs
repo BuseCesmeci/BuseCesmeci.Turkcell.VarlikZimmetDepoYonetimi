@@ -25,10 +25,10 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 
         // DEPOYA ATA tbl.assetstatus, get-- tbl.company
 
-        [HttpGet("getcompany")]
+        [HttpGet("")]
         public async Task<IActionResult> GetCompanyAsync()
         {
-            var value = await _companyDal.GetAllAsync();
+            var value = await _companyDal.GetAllAsync(x=>x.isActive == true);
             return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(value));
         }
     }

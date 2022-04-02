@@ -28,6 +28,14 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 
         // ZİMMET ATA tbl.assetstatus , tbl.assetowner, get-- tbl.assetActionOption        
 
+        [HttpGet("")]
+        public async Task<IActionResult> GetAssetOwnerAsync()
+        {
+            var value = await _assetOwnerDal.GetAllAsync(x => x.isActive == true);
+            return Ok(_mapper.Map<IEnumerable<AssetOwnerDTO>>(value));
+        }
+
+
         [HttpPost]
         [Route("~/api/addassetowner")]
         public async Task<IActionResult> AddAssetOwnerAsync([FromBody] AssetOwnerDTO assetOwnerDto)
@@ -41,14 +49,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             {
             }
             return BadRequest();
-        }
-
-        [HttpGet("")]
-        public async Task<IActionResult> GetAssetOwnerAsync()
-        {
-            var value = await _actionoptionDal.GetAllAsync();
-            return Ok(_mapper.Map<IEnumerable<AssetOwnerDTO>>(value));
-        }
+        }        
 
         [HttpGet("getassetactionoption")]
         public async Task<IActionResult> GetAssetActionOptionAsync()
