@@ -67,6 +67,9 @@ namespace VarlikZimmetDepoYonetimi.Service.Mapping
 
             CreateMap<AssetGroup, AssetGroupDTO>();
             CreateMap<AssetGroupDTO, AssetGroup>();
+
+            CreateMap<ActionStatus, ActionStatusDTO>();
+            CreateMap<ActionStatusDTO, ActionStatus>();
         }
     }
 }
