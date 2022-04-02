@@ -8,6 +8,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
 {
     public class AssetInfoPageController : Controller
     {
+        // guncelleme yapılacak
+
         public IActionResult Index()
         {
             return View();

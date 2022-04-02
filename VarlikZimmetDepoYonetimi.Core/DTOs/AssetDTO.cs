@@ -17,7 +17,7 @@ namespace VarlikZimmetDepoYonetimi.Core.DTOs
         public decimal Cost { get; set; }
         public bool Guarantee { get; set; }
         public int? RetireReasonID { get; set; } 
-        public DateTime RetireDate { get; set; }
+        public DateTime? RetireDate { get; set; } = DateTime.Now;
         public int? CompanyID { get; set; }
     }
 }

@@ -50,6 +50,10 @@ namespace VarlikZimmetDepoYonetimi.API
             services.AddScoped<IAssetDAL, AssetDAL>();
             services.AddScoped<IAssetActionDAL, AssetActionDAL>();
             services.AddScoped<IPersonnelDAL, PersonelDAL>();
+            services.AddScoped<ICurrencyDAL, CurrencyDAL>();
+            services.AddScoped<IBrandModelDAL, BrandModelDAL>();
+            services.AddScoped<IAssetTypeDAL, AssetTypeDAL>();
+            services.AddScoped<IAssetActionOptionsDAL, AssetActionOptionsDAL>();
             services.AddHttpClient();
             services.AddScoped<NotFoundFilter>();       
             services.AddAutoMapper(typeof(IMapProfile));

@@ -40,7 +40,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
             return result;
         }
-        public async Task<string> AddVMAsync(AssetDetailListVM alvm)
+        public async Task<string> AddVMAsync(AssetDTO alvm)
         {
             var jsonConversion = new StringContent(JsonConvert.SerializeObject(alvm));
             jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");

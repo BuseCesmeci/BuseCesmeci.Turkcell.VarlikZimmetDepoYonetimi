@@ -27,7 +27,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAllAsync()
         {
-            var value = await _assetDal.GetAllAsync();
+            var value = await _assetDal.GetAllAsync(x=>x.isActive == true);
             return Ok(_mapper.Map<IEnumerable<AssetDTO>>(value));
         }
 

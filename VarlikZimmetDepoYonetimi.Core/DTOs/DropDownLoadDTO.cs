@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VarlikZimmetDepoYonetimi.Core.DTOs
 {
-    public class DropDownLoadDTO
+    public class DropDownLoadDTO 
     {
         public List<AssetTypeDTO> AssetType { get; set; }
         public List<BrandModelDTO> Brand { get; set; }

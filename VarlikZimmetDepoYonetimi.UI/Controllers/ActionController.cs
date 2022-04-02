@@ -3,18 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VarlikZimmetDepoYonetimi.UI.Provider;
 
 namespace VarlikZimmetDepoYonetimi.UI.Controllers
 {
     public class ActionController : Controller
     {
+        AssetProvider _assetProvider;
+
+        public ActionController(AssetProvider assetProvider)
+        {
+            _assetProvider = assetProvider;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
-      //  [HttpPost]
+      
         public IActionResult AssignToStorage() // depoya ata
         {
+            
             return View();
         }
         //[HttpPost]

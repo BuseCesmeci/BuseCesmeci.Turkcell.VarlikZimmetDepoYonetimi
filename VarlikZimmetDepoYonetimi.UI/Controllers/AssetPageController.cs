@@ -25,33 +25,47 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         public async Task<IActionResult> AddAsset() 
+        
         {
-          //var value = await _assetProvider.Get();
-         // List<AssetDetailListVM> valueList = new List<AssetDetailListVM>();
-            var values = new AssetDetailListVM();
-            //values.AssetType = new List<AssetTypeDTO>
-            //{
-            //    new AssetTypeDTO { AssetTypeID = 1, AssetTypeName = "Telefon" },
-            ////};
-            //values.AssetType = new List<SelectListItem>
-            //{
-            //    new SelectListItem { Text = "Telefon" , Value = "1" },
-            //    new SelectListItem { Text = "Bilgisayar" , Value = "2" },
-            //    new SelectListItem { Text = "Modem" , Value = "3" },
-            //    new SelectListItem { Text = "Akıllı Saat" , Value = "4" },
-            //    new SelectListItem { Text = "Kulaklık" , Value = "5" },
-            //    new SelectListItem { Text = "Şarj Cihazı" , Value = "6" }
-            //};
-
             
+            var value = await _assetProvider.GetAssetDetailAsync();
+              var values = new AssetAddDTO();
+            // AssetAddDTO assetaddDto = new AssetAddDTO();
+
+            ViewData["AssetType"] = value.AssetType;
+            ViewData["Brand"] = value.Brand;
+            ViewData["Model"] = value.Model;
+            ViewData["Currency"] = value;
+
+            values.AssetType = value.AssetType;
+            values.Brand = value.Brand;
+            values.Model = value.Model;
+            values.Currency = value.Currency;
+
             return View(values);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsset(AssetDetailListVM assetVm) // varlık ekle -yeni kayıt-
+        public async Task<IActionResult> AddAsset(AssetAddDTO assetVm) // varlık ekle -yeni kayıt-
         {
+            var value = await _assetProvider.GetAssetDetailAsync();
+
+            assetVm.AssetType = value.AssetType ;
+            assetVm.Brand = value.Brand;
+            assetVm.Model  = value.Model;
+            assetVm.Currency = value.Currency;
+
             //var value = assetVm.AssetType;
-            await _assetProvider.AddVMAsync(assetVm);
+            var request = new AssetDTO();
+            request.AssetID = assetVm.AssetID;
+            request.AssetTypeID = assetVm.SelectedAssetType;
+            request.BrandModelID = assetVm.SelectedBrand;
+            request.Cost = assetVm.Cost;
+            request.Description = assetVm.Description;
+            request.RegistrationNumber = assetVm.RegistrationNumber;
+            request.RetireDate  = DateTime.Now;
+
+            await _assetProvider.AddVMAsync(request);
             return View(assetVm);
            
         }

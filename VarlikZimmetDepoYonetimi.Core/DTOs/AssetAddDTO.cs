@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 
-namespace VarlikZimmetDepoYonetimi.UI.Models.VM
+namespace VarlikZimmetDepoYonetimi.Core.DTOs
 {
-    public class AssetDetailListVM : BaseDTO
+    public class AssetAddDTO : BaseDTO
     {
-
         public List<AssetTypeDTO> AssetType { get; set; }
         public int SelectedAssetType { get; set; }
 
@@ -17,7 +15,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.VM
         public int SelectedBrand { get; set; }
         public List<BrandModelDTO> Model { get; set; }
         public int SelectedModel { get; set; }
-      
+
         public List<CurrencyDTO> Currency { get; set; }
         public int SelectedCurrency { get; set; }
         public int AssetID { get; set; }
@@ -25,11 +23,9 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.VM
         public decimal Cost { get; set; }
         public int? AssetBarcodeID { get; set; }
         public string Description { get; set; }
+        public int PriceID { get; set; }
+        public decimal AssetPrice { get; set; }
         public DateTime? RetireDate { get; set; }
-
-        //public IEnumerable<GuaranteeDTO> Guarantee { get; set; }
-        //public int SelectedGuarantee { get; set; }
-
 
     }
 }

@@ -1,4 +1,5 @@
-﻿@model VarlikZimmetDepoYonetimi.UI.Models.VM.AssetDetailListVM
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetAddDTO
+
 @{
     Layout = "~/Views/Shared/_AddAsset.cshtml";
 }
@@ -15,28 +16,28 @@
             </div>
             <div class="col-md-6 mt-3 form-group">
                 <label>Barkod</label>
-                <input type="text" class="form-control" />
+                <input asp-for="AssetBarcodeID" type="text" class="form-control" />
                 <br />
                 <label>Ürün Tipi</label>
-                <select asp-for="SelectedAssetType" class="form-select">
+                <select asp-for="SelectedAssetType" asp-items="@Model.AssetType.Select(x=> new SelectListItem { Text = x.AssetTypeName, Value = x.AssetTypeID.ToString() })" class="form-select">
                     <option>Seçiniz</option>
                 </select>
                 <br />
                 <label>Marka</label>
-                <select asp-for="SelectedBrand" asp-items="@Model.Brand" class="form-select">
+                <select asp-for="SelectedBrand" asp-items="@Model.Brand.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString()})" class="form-select">
                     <option>Seçiniz</option>
-                </select>                
+                </select>
                 <br />
                 <label>Model</label>
-                <select  class="form-select"></select>
+                <select asp-for="SelectedModel" asp-items="@Model.Model.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString() })" class="form-select"></select>
                 <br />
                 <label>Garantili Mi?</label>
-                <select asp-for="SelectedGuarantee" asp-items="@Model.Guarantee" class="form-select">
+                <select class="form-select">
                     <option>Seçiniz</option>
                 </select>
                 <br />
                 <label>Açıklama</label>
-                <textarea class="form-control" style="height:100px"></textarea>
+                <textarea asp-for="Description" class="form-control" style="height:100px"></textarea>
             </div>
             <div class="col-md-6 form-group">
                 <label class="mt-3">Giriş Tarihi</label>
@@ -46,18 +47,18 @@
                 <input type="datetime" class="form-control" />
                 <br />
                 <label>Maliyeti</label>
-                <input type="text" class="form-control" />
+                <input asp-for="Cost" type="text" class="form-control" />
                 <br />
                 <label>Para Birimi</label>
-                <select asp-for="SelectedCurrency" asp-items="@Model.Currency" class="form-select">
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
                     <option>Seçiniz</option>
                 </select>
                 <br />
                 <label>Güncel Fiyatı</label>
-                <input type="text" class="form-control" />
+                <input asp-for="AssetPrice" type="text" class="form-control" />
                 <br />
                 <label>Guncel Fiyat Para Birimi</label>
-                <select asp-for="SelectedCurrency" asp-items="@Model.Currency" class="form-select">
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
                     <option>Seçiniz</option>
                 </select>
                 <div class="mt-3">

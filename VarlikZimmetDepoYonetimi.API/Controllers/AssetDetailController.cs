@@ -14,23 +14,25 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
     [ApiController]
     public class AssetDetailController : ControllerBase
     {
-        // listeleri dönen bir tip tipin propları list olacak get metodu
 
         IBrandModelDAL _brandModelDal;
         IAssetTypeDAL _assetTypeDal;
+        ICurrencyDAL _currencyDal;
         IMapper _mapper;
 
-        public AssetDetailController(IBrandModelDAL brandModelDAL, IAssetTypeDAL assetTypeDAL, IMapper mapper)
+        public AssetDetailController(IBrandModelDAL brandModelDAL, IAssetTypeDAL assetTypeDAL,ICurrencyDAL currencyDAL ,IMapper mapper)
         {
             _brandModelDal = brandModelDAL;
             _assetTypeDal = assetTypeDAL;
+            _currencyDal = currencyDAL;
             _mapper = mapper;
         }
-               
 
+        [HttpGet]
+        [Route("~/api/assetdetail")]
         public async Task<DropDownLoadDTO> GetAssetDetail()
         {
-            var value =  _brandModelDal.GetAll(x => x.isActive == true);
+            var value =  _brandModelDal.GetAll(x => x.isActive == true && x.UpperBrandModelMi == true);
             DropDownLoadDTO dto = new DropDownLoadDTO();
             dto.Brand = (from p in value
                          select new BrandModelDTO
@@ -39,18 +41,45 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
                              BrandModelName = p.BrandModelName
                          }).ToList();
 
+
             var value2 = _assetTypeDal.GetAll(x => x.isActive == true);
-            List<AssetTypeDTO> listDto = new List<AssetTypeDTO>();
-            foreach (var item in value2)
-            {
-                listDto.Add(_mapper.Map<AssetTypeDTO>(value2));
-            }
-            dto.AssetType = listDto;
-            
+            dto.AssetType = (from a in value2
+                             select new AssetTypeDTO 
+                             { 
+                                AssetTypeID = a.AssetTypeID,
+                                AssetTypeName = a.AssetTypeName
+                             }).ToList();
+
+            //List<AssetTypeDTO> listAssetType = new List<AssetTypeDTO>();
+            //foreach (var item in value2)
+            //{
+            //    listAssetType.Add(_mapper.Map<AssetTypeDTO>(value2));
+            //}
+            //dto.AssetType = listAssetType;
+
+             var value3 = _currencyDal.GetAll(x => x.isActive == true);
+            dto.Currency = (from c in value3
+                            select new CurrencyDTO 
+                            {
+                                CurrencyID = c.CurrencyID,
+                                CurrencyName = c.CurrencyName
+                            }).ToList();
+            //List<CurrencyDTO> listCurrency = new List<CurrencyDTO>();
+            //foreach (var item in value3)
+            //{
+            //    listCurrency.Add(_mapper.Map<CurrencyDTO>(value3));
+            //}
+            //dto.Currency = listCurrency;
+
+            var value4 = _brandModelDal.GetAll(x => x.isActive == true && x.UpperBrandModelMi == false);
+            dto.Model = (from c in value4
+                         select new BrandModelDTO 
+                         {
+                            BrandModelID = c.BrandModelID,
+                            BrandModelName = c.BrandModelName
+                         }).ToList();
 
             return dto;
-        }
-        
-
+        }       
     }
 }
