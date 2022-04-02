@@ -24,13 +24,11 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddAsset() 
-        
+        public async Task<IActionResult> AddAsset()         
         {
             
             var value = await _assetProvider.GetAssetDetailAsync();
-              var values = new AssetAddDTO();
-            // AssetAddDTO assetaddDto = new AssetAddDTO();
+            var values = new AssetAddDTO();
 
             ViewData["AssetType"] = value.AssetType;
             ViewData["Brand"] = value.Brand;

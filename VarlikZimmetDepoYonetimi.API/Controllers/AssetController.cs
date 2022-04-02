@@ -132,6 +132,12 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             {
                 return BadRequest(ex);
             }            
-        }        
+        }  
+        
+
+        // Add asset iliskili tablo insert
+
+
+
     }
 }

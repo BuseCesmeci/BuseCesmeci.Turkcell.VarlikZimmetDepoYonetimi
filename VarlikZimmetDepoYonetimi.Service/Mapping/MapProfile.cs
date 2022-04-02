@@ -32,7 +32,41 @@ namespace VarlikZimmetDepoYonetimi.Service.Mapping
             CreateMap<BrandModel, BrandModelDTO>();
             CreateMap<BrandModelDTO, BrandModel>();
 
+            CreateMap<AssetBarcode, AssetBarcodeDTO>();
+            CreateMap<AssetBarcodeDTO, AssetBarcode>();
 
+            CreateMap<AssetStatus, AssetStatusDTO>();
+            CreateMap<AssetStatusDTO, AssetStatus>();
+
+            CreateMap<Price, PriceDTO>();
+            CreateMap<PriceDTO, Price>();
+
+            CreateMap<Unit, UnitDTO>();
+            CreateMap<UnitDTO, Unit>();
+
+            CreateMap<Statu, StatuDTO>();
+            CreateMap<StatuDTO, Statu>();
+
+            CreateMap<AssetOwner, AssetOwnerDTO>();
+            CreateMap<AssetOwnerDTO, AssetOwner>();
+
+            CreateMap<OwnerType, OwnerTypeDTO>();
+            CreateMap<OwnerTypeDTO, OwnerType>();
+
+            CreateMap<Customer, CustomerDTO>();
+            CreateMap<CustomerDTO, Customer>();
+
+            CreateMap<AssetCustomer, AssetCustomerDTO>();
+            CreateMap<AssetCustomerDTO, AssetCustomer>();
+
+            CreateMap<Comment, CommentDTO>();
+            CreateMap<CommentDTO, Comment>();           
+
+            CreateMap<Company, CompanyDTO>();
+            CreateMap<CompanyDTO, Company>();
+
+            CreateMap<AssetGroup, AssetGroupDTO>();
+            CreateMap<AssetGroupDTO, AssetGroup>();
         }
     }
 }
