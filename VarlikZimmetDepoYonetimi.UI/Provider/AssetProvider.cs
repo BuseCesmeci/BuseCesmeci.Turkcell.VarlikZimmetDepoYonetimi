@@ -103,7 +103,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             {
             }
             return result;
-        }
+        }       
 
         public async Task<string> DeleteAsync(int assetID)
         {

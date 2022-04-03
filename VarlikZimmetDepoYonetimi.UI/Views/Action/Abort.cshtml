@@ -1,4 +1,5 @@
-﻿@{
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetStatusDTO
+@{
     Layout = "~/Views/Shared/_ActionPage.cshtml";
 }
 
@@ -13,7 +14,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary mt-3">İptal Et</h5>
                             <label class="card-title my-2">Açıklama</label>
-                            <textarea class="form-control" style="height:300px"></textarea>
+                            <textarea asp-for="Note" class="form-control" style="height:300px"></textarea>
                             <br />
                             <input type="submit" value="İptal Et" class="btn btn-primary mt-4" />
                         </div>
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </form>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="~/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>

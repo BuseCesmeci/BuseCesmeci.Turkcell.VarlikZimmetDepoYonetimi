@@ -68,7 +68,7 @@ namespace VarlikZimmetDepoYonetimi.API
             services.AddScoped<IStatuDAL, StatuDAL>();
             services.AddScoped<IUnitDAL, UnitDAL>();
             services.AddScoped<IPersonnelDAL, PersonelDAL>();
-            
+            services.AddScoped<ICompanyDAL, CompanyDAL>();
             services.AddHttpClient();
             services.AddScoped<NotFoundFilter>();       
             services.AddAutoMapper(typeof(IMapProfile));

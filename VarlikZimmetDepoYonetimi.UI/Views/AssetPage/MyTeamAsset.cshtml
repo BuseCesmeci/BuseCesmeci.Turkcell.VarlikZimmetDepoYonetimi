@@ -1,11 +1,60 @@
-﻿@{
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AllAssetDTO
+@{
     Layout = "~/Views/Shared/_AssetList.cshtml";
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
-<div>
 
+<div>
+    <form>
+        <div class="card mt-4">
+            <div class="card-header text-white">
+                <i class="fas fa-table me-1"></i>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Kayıt Numarası</th>
+                            <th>Barkod</th>
+                            <th>Ürün Grubu</th>
+                            <th>Ürün Tipi</th>
+                            <th>Fiyat</th>
+                            <th>Marka</th>
+                            <th>Model</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.RegistrationNumber</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>2009/10/09</td>
+                            <td>$1,200,000</td>
+                        </tr>
+                        <tr>
+                            <td>Bruno Nash</td>
+                            <td>Software Engineer</td>
+                            <td>London</td>
+                            <td>38</td>
+                            <td>2011/05/03</td>
+                            <td>$163,500</td>
+                        </tr>
+                        <tr>
+                            <td>Sakura Yamamoto</td>
+                            <td>Support Engineer</td>
+                            <td>Tokyo</td>
+                            <td>37</td>
+                            <td>2009/08/19</td>
+                            <td>$139,575</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

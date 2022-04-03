@@ -7,7 +7,7 @@
 <link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
 
 <div>
-    <form method="post" asp-action="Index">
+    <form method="post" asp-action="Login">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5">
@@ -19,7 +19,7 @@
                                 <label for="inputEmail">Email address</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input asp-for="Username" type="password" class="form-control" placeholder="Password" />
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
                                 <label for="inputPassword">Password</label>
                             </div>
                             <div class="form-check mb-3">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                 <a class="small" href="password.html">Forgot Password?</a>
-                                <a class="btn btn-primary" href="index.html">Login</a>
+                                <a class="btn btn-primary" asp-action="AllAsset" asp-controller="AssetPage" asp-route-username ="@Model.Username" >Login</a>
                             </div>
                         </div>
                         <div class="card-footer text-center py-3 bg-dark">
