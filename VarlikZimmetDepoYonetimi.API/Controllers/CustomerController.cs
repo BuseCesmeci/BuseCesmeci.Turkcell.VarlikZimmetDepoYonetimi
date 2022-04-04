@@ -13,37 +13,39 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssetGroupController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        IAssetGroupDAL _assetGroupDal;
+        ICustomerDAL _customerDal;
         IMapper _mapper;
 
-        public AssetGroupController(IAssetGroupDAL assetGroupDAL, IMapper mapper)
+        public CustomerController(ICustomerDAL customerDAL, IMapper mapper)
         {
-            _assetGroupDal = assetGroupDAL;
+            _customerDal = customerDAL;
             _mapper = mapper;
         }
 
+
         [HttpGet("")]
-        public async Task<IActionResult> GetAssetGroupAsync()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var value = await _assetGroupDal.GetAllAsync(x => x.isActive == true);
-            return Ok(_mapper.Map<IEnumerable<AssetGroupDTO>>(value));
+            var value = await _customerDal.GetAllAsync();
+            return Ok(_mapper.Map<IEnumerable<CustomerDTO>>(value));
         }
 
         [HttpPost]
-        [Route("~/api/addassetgroup")]
-        public async Task<IActionResult> ADDAsync([FromBody] AssetGroupDTO assetGroupDto)
+        [Route("~/api/addcustomer")]
+        public async Task<IActionResult> ADDAsync([FromBody] CustomerDTO customerDto)
         {
             try
             {
-                await _assetGroupDal.AddAsync(_mapper.Map<AssetGroup>(assetGroupDto));
+                await _customerDal.AddAsync(_mapper.Map<Customer>(customerDto));
                 return new StatusCodeResult(201);
             }
             catch (Exception ex)
             {
             }
             return BadRequest();
-        }
+        }       
+
     }
 }

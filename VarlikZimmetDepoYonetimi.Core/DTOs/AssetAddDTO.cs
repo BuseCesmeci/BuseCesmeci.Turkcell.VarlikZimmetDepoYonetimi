@@ -26,6 +26,10 @@ namespace VarlikZimmetDepoYonetimi.Core.DTOs
         public int PriceID { get; set; }
         public decimal AssetPrice { get; set; }
         public DateTime? RetireDate { get; set; }
+        public int UnitID { get; set; }
+        public string UnitName { get; set; }
+        public int AssetWithoutBarcodeID { get; set; }
+        public decimal Quantity { get; set; }
 
     }
 }

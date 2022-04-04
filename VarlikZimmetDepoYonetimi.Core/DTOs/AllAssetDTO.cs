@@ -8,18 +8,12 @@ namespace VarlikZimmetDepoYonetimi.Core.DTOs
 {
     public class AllAssetDTO
     {
-        public AssetDTO AssetID { get; set; }
-        public AssetDTO RegistrationNumber { get; set; }
-        public AssetBarcodeDTO AssetBarcodeID { get; set; }
-        public AssetBarcodeDTO Barcode { get; set; }
-        public AssetTypeDTO AssetTypeID { get; set; }
-        public AssetTypeDTO AssetTypeName { get; set; }
-        public PriceDTO PriceID { get; set; }
-        public PriceDTO AssetPrice { get; set; }
-        public BrandModelDTO BrandModelID { get; set; }
-        public BrandModelDTO BrandModelName { get; set; }
-        public AssetGroupDTO AssetGroupID { get; set; }
-        public AssetGroupDTO AssetGroupName { get; set; }
-        public bool isActive { get; set; }
+        public List<AssetDTO> Asset { get; set; }
+        public List<AssetBarcodeDTO> Barcode { get; set; }
+        public List<AssetTypeDTO> AssetType { get; set; }
+        public List<AssetGroupDTO> AssetGroup { get; set; }
+        public List<PriceDTO> Price { get; set; }
+        public List<BrandModelDTO> Brand { get; set; }
+        public List<BrandModelDTO> Model { get; set; }
     }
 }

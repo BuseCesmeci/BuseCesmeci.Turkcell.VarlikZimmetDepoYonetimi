@@ -18,31 +18,21 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             _assetProvider = assetProvider;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var value = await _assetProvider.GetAssetDetailAsync();
-            var values = new AssetAddDTO();
-
-            ViewData["AssetType"] = value.AssetType;
-            ViewData["Brand"] = value.Brand;
-            ViewData["Model"] = value.Model;
-            ViewData["Currency"] = value;
-
-            values.AssetType = value.AssetType;
-            values.Brand = value.Brand;
-            values.Model = value.Model;
-            values.Currency = value.Currency;
-
-            return View(values);
+            return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> RegistrationInfo(int id) // kayıt bilgileri
         {
-            var uptvalue = await _assetProvider.GetAssetByIDAsync(id);
+            id = 27;
+
+            var uptvalue = await _assetProvider.GetAssetUpdateByIDAsync(id);
 
             return View(uptvalue);
-        }
 
+        }
         [HttpPost]
         public async Task<IActionResult> RegistrationInfo(AssetAddDTO assetDto) // kayıt bilgileri
         {
@@ -69,10 +59,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             //var price = new PriceDTO();
             //price.AssetID = assetVm.AssetID;
             //price.AssetPrice = assetVm.AssetPrice;
-
-            //var status = new AssetStatusDTO();
-            //status.AssetID = assetVm.AssetID;
-            //status.StatuID = 1;
+           
 
             await _assetProvider.UpdateAsync(request);
             return View(assetDto);

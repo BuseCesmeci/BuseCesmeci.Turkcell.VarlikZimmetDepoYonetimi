@@ -18,13 +18,15 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         IBrandModelDAL _brandModelDal;
         IAssetTypeDAL _assetTypeDal;
         ICurrencyDAL _currencyDal;
+        IAssetGroupDAL _assetGroupDal;
         IMapper _mapper;
 
-        public AssetDetailController(IBrandModelDAL brandModelDAL, IAssetTypeDAL assetTypeDAL,ICurrencyDAL currencyDAL ,IMapper mapper)
+        public AssetDetailController(IBrandModelDAL brandModelDAL, IAssetTypeDAL assetTypeDAL,ICurrencyDAL currencyDAL, IAssetGroupDAL assetGroupDAL, IMapper mapper)
         {
             _brandModelDal = brandModelDAL;
             _assetTypeDal = assetTypeDAL;
             _currencyDal = currencyDAL;
+            _assetGroupDal = assetGroupDAL;
             _mapper = mapper;
         }
 
@@ -78,6 +80,14 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
                             BrandModelID = c.BrandModelID,
                             BrandModelName = c.BrandModelName
                          }).ToList();
+
+            var value5 = _assetGroupDal.GetAll(x => x.isActive == true);
+            dto.AssetGroup = (from g in value5
+                              select new AssetGroupDTO 
+                              {
+                                AssetGroupID = g.AssetGroupID,
+                                AssetGroupName = g.AssetGroupName
+                              }).ToList();
 
             return dto;
         }       

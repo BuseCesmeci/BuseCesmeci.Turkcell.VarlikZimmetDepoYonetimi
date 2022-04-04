@@ -30,6 +30,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         {
             var value = await _companyDal.GetAllAsync(x=>x.isActive == true);
             return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(value));
-        }
+        }       
+
     }
 }

@@ -13,6 +13,6 @@ namespace VarlikZimmetDepoYonetimi.Core.Models.Entities
         public int PriceID { get; set; }
         public int AssetID { get; set; }
         public decimal AssetPrice { get; set; }
-        public int CurrencyID { get; set; }
+        public int? CurrencyID { get; set; }
     }
 }

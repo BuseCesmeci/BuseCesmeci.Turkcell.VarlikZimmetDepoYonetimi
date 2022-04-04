@@ -39,21 +39,13 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
 
                 var asset = await _assetDal.GetByIdAsync(assetID);
                 var assetDto = _mapper.Map<AssetDTO>(asset);
+
                 return Ok(assetDto);
-                //var assetDto = await _mapper.Map<Asset>( _assetDal.GetByIdAsync(x => x.AssetID == assetID));
-                //if (assetDto == null)
-                //{
-                //   return NotFound($"{assetID} e ait veri bulunamadı..");
-                //}
-                //else
-                //{
-                //    return Ok(assetDto);
-                //}
                 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest();
             }            
         }
 
@@ -70,27 +62,28 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             {                
             }
             return BadRequest();
-        }
-
-        //[HttpPost]
-        //[Route("~/api/addasset")]
-        //public IActionResult ADD([FromBody] AssetDTO assetDto)
-        //{
-        //    try
-        //    {
-        //        _assetDal.Add(_mapper.Map<Asset>(assetDto));
-               
-        //        return new StatusCodeResult(201);
-        //    }
-        //    catch (Exception ex)
-        //    {
-               
-        //    }
-        //    return BadRequest();
-        //}
+        }      
 
 
-        [HttpPut]
+            //[HttpPost]
+            //[Route("~/api/addasset")]
+            //public IActionResult ADD([FromBody] AssetDTO assetDto)
+            //{
+            //    try
+            //    {
+            //        _assetDal.Add(_mapper.Map<Asset>(assetDto));
+
+            //        return new StatusCodeResult(201);
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //    }
+            //    return BadRequest();
+            //}
+
+
+         [HttpPut]
         [Route("~/api/updateasset")]
         public async Task<IActionResult> UPDATEAsync([FromBody] AssetDTO assetDto)
         {

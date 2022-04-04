@@ -7,7 +7,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 {
     public class AssetToReturnDTO : AssetStatusDTO
     {
-        // iade et
+        // iade et, tüket
         public CustomerDTO CustomerID { get; set; }
         public CustomerDTO SubscriptionNumber { get; set; }
     }

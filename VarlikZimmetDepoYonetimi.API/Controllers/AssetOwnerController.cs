@@ -51,12 +51,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             return BadRequest();
         }        
 
-        [HttpGet("getassetactionoption")]
-        public async Task<IActionResult> GetAssetActionOptionAsync()
-        {
-            var value = await _actionoptionDal.GetAllAsync();
-            return Ok(_mapper.Map<IEnumerable<AssetActionOptionsDTO>>(value));
-        }
+       
 
     }
 }

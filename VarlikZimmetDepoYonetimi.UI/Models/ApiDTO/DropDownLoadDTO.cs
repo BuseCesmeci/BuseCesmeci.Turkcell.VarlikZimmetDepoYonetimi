@@ -11,5 +11,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
         public List<BrandModelDTO> Brand { get; set; }
         public List<BrandModelDTO> Model { get; set; }
         public List<CurrencyDTO> Currency { get; set; }
+        public List<AssetGroupDTO> AssetGroup { get; set; }
     }
 }

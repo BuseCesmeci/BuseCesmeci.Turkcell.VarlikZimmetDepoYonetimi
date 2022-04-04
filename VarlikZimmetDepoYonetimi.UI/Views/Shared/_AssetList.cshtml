@@ -43,21 +43,21 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Yeni Varlık Ekle</div>
-                        <button class="btn btn-primary">
+                        <a asp-action="AddAsset" asp-controller="AssetPage" class="btn btn-primary">
                             Yeni Kayıt
-                        </button>
+                        </a>
                         <div class="sb-sidenav-menu-heading">Varlık Listeleri</div>
                         <a asp-action="MyAsset" asp-controller="AssetPage" class="nav-link collapsed text-primary" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                              Varlıklarım                         
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a asp-action="MyTeamAsset" asp-controller="AssetPage" class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a asp-action="MyTeamAsset" asp-controller="AssetPage" class="nav-link collapsed text-primary"data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Ekibimin Varlıkları
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a asp-action="AllAsset" asp-controller="AssetPage" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a asp-action="AllAsset" asp-controller="AssetPage" class="nav-link collapsed text-primary" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Tüm Varlıklar
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

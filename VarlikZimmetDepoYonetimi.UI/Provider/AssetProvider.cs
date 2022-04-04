@@ -63,6 +63,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             return result;
         }
 
+                   
         public async Task<string> TokenAddAsync(AssetDTO assetDto, string token = null)
         {
             if (token == null)
@@ -132,6 +133,36 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
            
         }
+        public async Task<AssetDTO> GetAsync()
+        {
+            var request = await _client.GetAsync("asset");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AssetDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        //public async Task<AllAssetDTO> GetAllAssetTableAsync()
+        //{
+        //    var request = await _client.GetAsync("getassettable");
+
+        //    if (request.IsSuccessStatusCode)
+        //    {
+        //        var content = await request.Content.ReadAsStringAsync();
+        //        return JsonConvert.DeserializeObject<AllAssetDTO>(content);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
         public async Task<DropDownLoadDTO> GetAssetDetailAsync()
         {
             var request = await _client.GetAsync("assetdetail");
@@ -161,6 +192,21 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
                 return null;
             }
             
+        }
+        public async Task<AssetAddDTO> GetAssetUpdateByIDAsync(int assetID)
+        {
+            var request = await _client.GetAsync("asset/" + assetID);
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AssetAddDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

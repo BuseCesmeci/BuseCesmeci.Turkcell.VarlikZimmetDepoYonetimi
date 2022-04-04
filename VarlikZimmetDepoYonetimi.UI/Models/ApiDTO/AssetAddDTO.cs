@@ -19,6 +19,9 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
         public List<CurrencyDTO> Currency { get; set; }
         public int SelectedCurrency { get; set; }
 
+        public List<AssetGroupDTO> AssetGroup { get; set; }
+        public int SelectedAssetGroup { get; set; }
+
         public int AssetID { get; set; }
         public string RegistrationNumber { get; set; }
         public decimal Cost { get; set; }
@@ -28,6 +31,11 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
         public DateTime? RetireDate { get; set; }
         public int PriceID { get; set; }
         public decimal AssetPrice { get; set; }
+        public int UnitID { get; set; }
+        public string UnitName { get; set; }
+        public int AssetWithoutBarcodeID { get; set; }
+        public decimal Quantity { get; set; }
+
 
     }
 }
