@@ -1,0 +1,51 @@
+﻿@model List<VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.GetAssetTableDTO>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminManagmentLayout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+
+<div>
+    <form asp-action="GetAsset">
+        <div class="card mt-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                <span class="text-primary"><b>Tüm Varlıklar</b></span>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Kayıt Numarası</th>
+                            <th>Barkod</th>
+                            <th>Ürün Grubu</th>
+                            <th>Ürün Tipi</th>
+                            <th>Fiyat</th>
+                            <th>Marka</th>
+                            <th>Model</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.RegistrationNumber</td>
+                                <td>@item.Barcode</td>
+                                <td>@item.AssetGroupName</td>
+                                <td>@item.AssetTypeName</td>
+                                <td>@item.AssetPrice</td>
+                                <td>@item.BrandModelName</td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>

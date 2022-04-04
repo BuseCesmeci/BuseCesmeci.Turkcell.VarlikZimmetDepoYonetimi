@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
 
 namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
 {
@@ -13,5 +14,12 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> GetAsset()
+        {
+
+            return View();
+        }
+
     }
 }
