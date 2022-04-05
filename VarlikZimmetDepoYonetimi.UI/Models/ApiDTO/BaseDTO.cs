@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 {
-    public class BaseDTO
+    public abstract class BaseDTO
     {
         public DateTime? CreateDate { get; set; } = DateTime.Now;
         public string CreatedBy { get; set; }

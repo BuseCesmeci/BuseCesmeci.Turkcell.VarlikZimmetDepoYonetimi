@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using VarlikZimmetDepoYonetimi.UI.Models.ApiDTO;
+using VarlikZimmetDepoYonetimi.UI.Models.VM;
 
 namespace VarlikZimmetDepoYonetimi.UI.Provider
 {
@@ -39,7 +40,30 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
             return result;
         }
+        public async Task<string> AddVMAsync(AssetDTO alvm)
+        {
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(alvm));
+            jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
+            string result = "";
+            try
+            {
+                var responsePostValue = await _client.PostAsync("addasset", jsonConversion);
+                if (responsePostValue.IsSuccessStatusCode)
+                {
+                    await responsePostValue.Content.ReadAsStringAsync();
+                }
+                result = "Işlem tamamlandı.";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
+
+                   
         public async Task<string> TokenAddAsync(AssetDTO assetDto, string token = null)
         {
             if (token == null)
@@ -70,7 +94,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             string result = "";
             try
             {
-                var responseValue = await _client.PutAsync("updateproducts", jsonConversion);
+                var responseValue = await _client.PutAsync("updateasset", jsonConversion);
                 if (responseValue.IsSuccessStatusCode)
                 {
                     result = "Işlem tamamlandı.";
@@ -80,7 +104,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             {
             }
             return result;
-        }
+        }       
 
         public async Task<string> DeleteAsync(int assetID)
         {
@@ -103,7 +127,55 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
                 var content = await request.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<AssetDTO>>(content);
             }
-            return null;
+            else
+            {
+                return null;
+            }
+           
+        }
+        public async Task<AssetDTO> GetAsync()
+        {
+            var request = await _client.GetAsync("asset");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AssetDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        //public async Task<AllAssetDTO> GetAllAssetTableAsync()
+        //{
+        //    var request = await _client.GetAsync("getassettable");
+
+        //    if (request.IsSuccessStatusCode)
+        //    {
+        //        var content = await request.Content.ReadAsStringAsync();
+        //        return JsonConvert.DeserializeObject<AllAssetDTO>(content);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        public async Task<DropDownLoadDTO> GetAssetDetailAsync()
+        {
+            var request = await _client.GetAsync("assetdetail");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<DropDownLoadDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<AssetDTO> GetAssetByIDAsync(int assetID)
@@ -115,7 +187,27 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
                 var content = await request.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<AssetDTO>(content);
             }
-            return null;
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        public async Task<AssetAddDTO> GetAssetUpdateByIDAsync(int assetID)
+        {
+            var request = await _client.GetAsync("asset/" + assetID);
+
+            if (request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AssetAddDTO>(content);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

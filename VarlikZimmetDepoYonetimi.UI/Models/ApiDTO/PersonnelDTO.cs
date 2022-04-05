@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 {
-    public class PersonelDTO : BaseDTO
+    public class PersonnelDTO : BaseDTO
     {
         public int PersonnelID { get; set; }
         public int UpperID { get; set; }

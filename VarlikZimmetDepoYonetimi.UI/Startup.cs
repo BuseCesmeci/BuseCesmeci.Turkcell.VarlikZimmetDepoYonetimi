@@ -42,6 +42,7 @@ namespace VarlikZimmetDepoYonetimi.UI
                 option.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
+            services.AddDistributedMemoryCache();
 
             services.AddHttpClient<TokenProvider>(option =>
             {
@@ -50,6 +51,79 @@ namespace VarlikZimmetDepoYonetimi.UI
             services.AddHttpClient<AssetProvider>(option =>
             {
                 option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetActionProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetBarcodeProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetGroupProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetPriceProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetTypeProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<BrandModelProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<CommentProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<UnitProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetStatusProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<GetAssetTableProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<CustomerProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetActionOptionsProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<PersonnelProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<CompanyProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetOwnerProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<AssetActionProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<OwnerTypeProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("Redis");                
             });
         }
 

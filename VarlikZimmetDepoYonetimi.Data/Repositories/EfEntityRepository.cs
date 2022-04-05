@@ -28,9 +28,9 @@ namespace VarlikZimmetDepoYonetimi.Data.Repositories
         {
             using (var context = new TContext())
             {
-                var addEntity = await context.AddAsync(entity);
-                addEntity.State = EntityState.Added;
-                var value = await context.SaveChangesAsync();
+                 await context.AddAsync(entity);
+                // addEntity.State = EntityState.Added;
+                var value = context.SaveChanges();
             }
         }
 
@@ -59,10 +59,6 @@ namespace VarlikZimmetDepoYonetimi.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public void SoftDelete(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task DeleteAsync(TEntity entity)
         {
@@ -70,7 +66,7 @@ namespace VarlikZimmetDepoYonetimi.Data.Repositories
             {
                 var added = context.Entry(entity);
                 added.State = EntityState.Deleted;
-                 var value = await context.SaveChangesAsync();
+                var value = await context.SaveChangesAsync();
             }
         }
 
@@ -128,7 +124,7 @@ namespace VarlikZimmetDepoYonetimi.Data.Repositories
             {
                 var updated = context.Entry(entity);
                 updated.State = EntityState.Modified;
-                 var value = await context.SaveChangesAsync();
+                var value = await context.SaveChangesAsync();
             }
         }
 
@@ -137,9 +133,21 @@ namespace VarlikZimmetDepoYonetimi.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                return await context.Set<TEntity>().FindAsync(id);
+            }
+        }
+
+        public async Task SoftDelete(TEntity entity)
+        {
+            using (var context = new TContext())
+            {
+                entity.GetType().GetProperty("isActive").SetValue(entity, false);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

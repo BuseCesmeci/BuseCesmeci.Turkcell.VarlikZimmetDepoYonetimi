@@ -40,19 +40,19 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Varlık</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Kayıt Bilgileri
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Karekod Bilgileri
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Kayıt Geçmişi
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Form Geçmişi
                         </a>
@@ -64,15 +64,15 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">Depoya Ata</a>
-                                <a class="nav-link" href="#">Üstlen</a>
-                                <a class="nav-link" href="#">Tüket</a>
-                                <a class="nav-link" href="#">İade Et</a>
-                                <a class="nav-link" href="#">İptal Et</a>
-                                <a class="nav-link" href="#">Emekli Et</a>
-                                <a class="nav-link" href="#">Kayıp/Çalıntı Bildir</a>
-                                <a class="nav-link" href="#">Zimmet Ata</a>
-                                <a class="nav-link" href="#">Yorum Ekle</a>
+                                <a class="nav-link" asp-action="AssignToStorage" asp-controller="Action">Depoya Ata</a>
+                                <a class="nav-link" asp-action="TakeOn" asp-controller="Action" >Üstlen</a>
+                                <a class="nav-link" asp-action="ToConsume" asp-controller="Action" >Tüket</a>
+                                <a class="nav-link" asp-action="AssetToReturn" asp-controller="Action" >İade Et</a>
+                                <a class="nav-link" asp-action="Abort" asp-controller="Action" >İptal Et</a>
+                                <a class="nav-link" asp-action="Superannuate" asp-controller="Action" >Emekli Et</a>
+                                <a class="nav-link" asp-action="LossStolen" asp-controller="Action" >Kayıp/Çalıntı Bildir</a>
+                                <a class="nav-link" asp-action="Debit" asp-controller="Action" >Zimmet Ata</a>
+                                <a class="nav-link" asp-action="AddComment" asp-controller="Action" >Yorum Ekle</a>
                             </nav>
                         </div>
                     </div>

@@ -9,14 +9,14 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
     {
         public int AssetID { get; set; }
         public string RegistrationNumber { get; set; }
-        public int AssetGroupID { get; set; }
-        public int AssetTypeID { get; set; }
-        public int BrandModelID { get; set; }
-        public int PersonnelTeamID { get; set; }
+        public int? AssetGroupID { get; set; }
+        public int? AssetTypeID { get; set; }
+        public int? BrandModelID { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
         public bool Guarantee { get; set; }
-        public DateTime EntryDate { get; set; }
+        public int? RetireReasonID { get; set; }
         public DateTime RetireDate { get; set; }
+        public int? CompanyID { get; set; }
     }
 }

@@ -27,21 +27,21 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAllAsync()
         {
-            var value = await _personnelDAL.GetAllAsync();
+            var value = await _personnelDAL.GetAllAsync(x=> x.isActive == true);
             return Ok(_mapper.Map<IEnumerable<PersonnelDTO>>(value));
         }
 
 
         [HttpGet("{personelID}")]
-        public async Task<IActionResult> GETAsync(int personelID)
+        public async Task<IActionResult> GETPersonnelAsync(int personelID)
         {
             try
             {
-                PersonnelDTO personnelDto = _mapper.Map<PersonnelDTO>(await _personnelDAL.GetAsync(x => x.PersonnelID == personelID));
+                PersonnelDTO personnelDto = _mapper.Map<PersonnelDTO>(await _personnelDAL.GetAsync(x => x.PersonnelID == personelID && x.UpperTeamMi == false)); // personel yolluyor
 
                 if (personnelDto == null)
                 {
-                    return NotFound($"{personelID} e ait veri bulunamadı..");
+                    return null;
                 }
                 else
                 {
@@ -54,6 +54,8 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
                 return BadRequest(ex);
             }
         }
+
+
         [HttpPost]
         [Route("~/api/addpersonnel")]
         public async Task<IActionResult> ADDAsync([FromBody] PersonnelDTO personnelDto)

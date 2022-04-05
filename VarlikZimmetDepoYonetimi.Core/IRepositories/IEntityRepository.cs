@@ -15,7 +15,7 @@ namespace VarlikZimmetDepoYonetimi.Core.IRepositories
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-        void SoftDelete(T entity);
+        Task SoftDelete(T entity);
         void RemoveRange(IEnumerable<T> entities);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);

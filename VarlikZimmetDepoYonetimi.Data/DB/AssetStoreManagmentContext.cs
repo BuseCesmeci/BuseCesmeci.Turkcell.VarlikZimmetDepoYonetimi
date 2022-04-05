@@ -12,16 +12,14 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
     {
         public AssetStoreManagmentContext()
         {
-
         }
 
         public AssetStoreManagmentContext(DbContextOptions options) :base(options)
-        {
-            
+        {            
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\\MSSQLLocalDB;DataBase=AssetStoreManagment;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=.;DataBase=AssetStoreManagment;Integrated Security=True");
         }
 
         public DbSet<ActionStatus> ActionStatus { get; set; }
@@ -29,10 +27,12 @@ namespace VarlikZimmetDepoYonetimi.Data.DB
         public DbSet<AppPageProcessClaim> AppPageProcessClaim { get; set; }
         public DbSet<Asset> Asset { get; set; }
         public DbSet<AssetAction> AssetAction { get; set; }
+        public DbSet<AssetActionOptions> AssetActionOptions { get; set; }
         public DbSet<AssetBarcode> AssetBarcode { get; set; }
         public DbSet<AssetCustomer> AssetCustomer { get; set; }
         public DbSet<AssetGroup> AssetGroup { get; set; }
         public DbSet<AssetOwner> AssetOwner { get; set; }
+        public DbSet<AssetStatus> AssetStatus { get; set; }
         public DbSet<AssetType> AssetType { get; set; }
         public DbSet<AssetWithoutBarcode> AssetWithoutBarcode { get; set; }
         public DbSet<BrandModel> BrandModel { get; set; }

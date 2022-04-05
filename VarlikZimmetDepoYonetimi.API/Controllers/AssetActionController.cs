@@ -18,9 +18,9 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
         IAssetActionDAL _assetActionDAL;
         IMapper _mapper;
 
-        public AssetActionController(IAssetActionDAL assetActionDAL, IMapper mapper)
+        public AssetActionController(IAssetActionDAL assetActionDal, IMapper mapper)
         {
-            _assetActionDAL = assetActionDAL;
+            _assetActionDAL = assetActionDal;
             _mapper = mapper;
         }
 

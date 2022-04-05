@@ -1,4 +1,5 @@
-﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetDTO
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetAddDTO
+
 @{
     Layout = "~/Views/Shared/_AddAsset.cshtml";
 }
@@ -6,56 +7,93 @@
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
 
-<form method="post" asp-action="AddAsset" asp-controller="AssetPage">
+<form asp-action="AddAsset" asp-controller="AssetPage">
     <div class="container py-5">
         <div class="row">
-            <div class="form-check form-switch py-3">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Barkod</label>
-            </div>
             <div class="col-md-6 mt-3 form-group">
+                <div class="row">
+                    <div class="form-check form-switch py-3 col-md-4">
+                        <input class="form-check-input" type="checkbox" role="switch" onclick="barcode_Click" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Barkod</label>
+                    </div>
+                    @*<div class="col-md-6">
+                        <label class="switch">
+                            <input class="form-check-input" asp-for="@Model.IsBarcode" type="checkbox" id="AddAssetCheckID" checked>
+                            <divs class="slider round">
+                            </divs>
+                        </label>
+                    </div>*@
+                    <div class="col-md-4">
+                        <label>Miktar</label>
+                        <input asp-for="Quantity" type="text" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Birim</label>
+                        <input asp-for="UnitName" type="text" class="form-control" />
+                    </div>
+                </div>
                 <label>Barkod</label>
-                <input type="text" class="form-control" />
+                <input asp-for="Barcode" type="text" class="form-control" />
                 <br />
-                <label>Ürün Tipi</label>               
-                <select asp-for="AssetTypeID" class="form-select"></select>
+                <label>Kayıt Numarası</label>
+                <input asp-for="RegistrationNumber" type="text" class="form-control" />
+                <br />
+                <label>Ürün Grubu</label>
+                <select asp-for="SelectedAssetGroup" asp-items="@Model.AssetGroup.Select(x=> new SelectListItem { Text = x.AssetGroupName, Value = x.AssetGroupID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
+                <br />
+                <label>Ürün Tipi</label>
+                <select asp-for="SelectedAssetType" asp-items="@Model.AssetType.Select(x=> new SelectListItem { Text = x.AssetTypeName, Value = x.AssetTypeID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Marka</label>
-                <select asp-for="BrandModelID" class="form-select"></select>
+                <select asp-for="SelectedBrand" asp-items="@Model.Brand.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString()})" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Model</label>
-                <select asp-for="BrandModelID" class="form-select"></select>
+                <select asp-for="SelectedModel" asp-items="@Model.Model.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString() })" class="form-select"></select>
                 <br />
                 <label>Garantili Mi?</label>
-                <select class="form-select"></select>
-                <br />
-                <label>Açıklama</label>
-                <textarea asp-for="Description" class="form-control" style="height:100px"></textarea>
+                <select class="form-select">
+                    <option>Seçiniz</option>
+                </select>               
             </div>
             <div class="col-md-6 form-group">
                 <label class="mt-3">Giriş Tarihi</label>
-                <input type="datetime" class="form-control" />
+                <input asp-for="CreateDate" type="date" class="form-control" />
                 <br />
                 <label>Emeklilik Tarihi</label>
-                <input type="text" class="form-control" />
+                <input asp-for="RetireDate" type="date" class="form-control" />
                 <br />
                 <label>Maliyeti</label>
                 <input asp-for="Cost" type="text" class="form-control" />
                 <br />
                 <label>Para Birimi</label>
-                <select class="form-select"></select>
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Güncel Fiyatı</label>
-                <input type="text" class="form-control" />
+                <input asp-for="AssetPrice" type="text" class="form-control" />
                 <br />
                 <label>Guncel Fiyat Para Birimi</label>
-                <select class="form-select"></select>
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
+                <br />
+                <label>Açıklama</label>
+                <textarea asp-for="Description" class="form-control" style="height:100px"></textarea>
                 <div class="mt-3">
-                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    <input type="submit" value="Kaydet" class="btn btn-primary" onclick="Save" />
                 </div>
             </div>
         </div>
     </div>
 </form>
+
+
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="~/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>
