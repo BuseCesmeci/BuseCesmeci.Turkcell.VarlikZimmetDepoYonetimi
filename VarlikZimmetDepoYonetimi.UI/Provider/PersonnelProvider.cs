@@ -40,14 +40,14 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             return result;
         }
 
-        public async Task<PersonnelDTO> GetAsync()
+        public async Task<List<PersonnelDTO>> GetAsync()
         {
             var request = await _client.GetAsync("personnel");
 
             if (request.IsSuccessStatusCode)
             {
                 var content = await request.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<PersonnelDTO>(content);
+                return JsonConvert.DeserializeObject<List<PersonnelDTO>>(content);
             }
             else
             {

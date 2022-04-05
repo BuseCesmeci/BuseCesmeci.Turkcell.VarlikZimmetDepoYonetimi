@@ -36,10 +36,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AssignToStorage() // depoya ata
-        {
-            return View();
-        }
+        public async Task<IActionResult> AssignToStorage() => View(); // depoya ata
 
         [HttpPost]
         public async Task<IActionResult> AssignToStorage(AssignToStorageDTO storageDto) // depoya ata
@@ -52,10 +49,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult TakeOn() // ustlen
-        {
-            return View();
-        }
+        public IActionResult TakeOn() => View();    // ustlen
 
         //[HttpPost]
         //public IActionResult TakeOn() // ustlen
@@ -64,8 +58,10 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> ToConsume() // tüket
+        public async Task<IActionResult> ToConsume()    // tüket
         {
+            var getValue = await _customerProvider.GetAsync();
+
             return View();
         }
 
@@ -75,8 +71,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             // AddCustomer
             // GetCustomer
 
-            var getValue = await _customerProvider.GetAsync();
-
             var addValue = await _customerProvider.AddToConsumeAsync(consumeDTO);
 
 
@@ -84,10 +78,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AssetToReturn() // Iadet et
-        {
-            return View();
-        }
+        public async Task<IActionResult> AssetToReturn() => View(); // Iadet et
 
         [HttpPost]
         public async Task<IActionResult> AssetToReturn(AssetToReturnDTO toReturnDto) // Iadet et
@@ -105,6 +96,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Abort() // iptal et 
         {
+            var getValue = await _actionOptionsProvider.GetActionOptionAsync();
+
             return View();
         }
 
@@ -112,9 +105,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         public async Task<IActionResult> Abort(AssetStatusDTO abortDto) // iptal et 
         {
             // AddAsssetStatus
-            // GetAssetOption
-
-            var getValue = await _actionOptionsProvider.GetActionOptionAsync();
+            // GetAssetOption            
 
             var addValue = await _statusProvider.AddAssetStatusAsync(abortDto);
 
@@ -124,6 +115,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Superannuate() // emekli et
         {
+            var getValue = await _actionOptionsProvider.GetActionOptionAsync();
+
             return View();
         }
 
@@ -133,7 +126,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             // AddAssetStatus
             // GetActionOption
 
-            var getValue = await _actionOptionsProvider.GetActionOptionAsync();
+            
 
             var addValue = await _statusProvider.AddAssetStatusAsync(superannuatedto);
 
@@ -141,10 +134,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> LossStolen() // kayip/calinti bildir
-        {
-            return View();
-        }
+        public async Task<IActionResult> LossStolen() => View(); // kayip/calinti bildir
 
         [HttpPost]
         public async Task<IActionResult> LossStolen(AssetStatusDTO statusDto) // kayip/calinti bildir
@@ -159,6 +149,9 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Debit()
         {
+            var getOption = await _actionOptionsProvider.GetActionOptionAsync();
+
+            var getOwner = await _ownerProvider.GetAssetOwnerAsync();
             return View();
         }
 
@@ -168,11 +161,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             // AddAssetOwner
             // GetAssetOwner
             // GetActionOption
-            // AddAssetStatus
-
-            var getOwner = await _ownerProvider.GetAssetOwnerAsync();
-
-            var getOption = await _actionOptionsProvider.GetActionOptionAsync();
+            // AddAssetStatus            
 
             var addOwner = await _ownerProvider.AddAssetOwnerAsync(debitDto);
 
@@ -182,10 +171,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddComment() // yorum ekle  
-        {            
-            return View();
-        }
+        public async Task<IActionResult> AddComment() => View(); // yorum ekle  
 
         [HttpPost]
         public async Task<IActionResult> AddComment(CommentDTO commentDto) // yorum ekle  

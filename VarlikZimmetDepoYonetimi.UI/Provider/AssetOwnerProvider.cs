@@ -40,14 +40,14 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             return result;
         }
 
-        public async Task<PriceDTO> GetAssetOwnerAsync()
+        public async Task<List<AssetOwnerDTO>> GetAssetOwnerAsync()
         {
             var request = await _client.GetAsync("assetowner");
 
             if (request.IsSuccessStatusCode)
             {
                 var content = await request.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<PriceDTO>(content);
+                return JsonConvert.DeserializeObject<List<AssetOwnerDTO>>(content);
             }
             else
             {

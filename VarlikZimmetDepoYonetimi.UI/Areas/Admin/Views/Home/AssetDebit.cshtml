@@ -1,0 +1,52 @@
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.DebitDTO
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_ActionPage.cshtml";
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+
+<div>
+    <h5 class=@ViewBag.text>
+        @ViewBag.location
+    </h5></div>
+
+<form method="post" asp-action="AssetDebit" asp-controller="Home">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mt-3">Zimmet Ata</h5>
+                        <label>Asset</label>
+                        @*<select asp-for="SelectedAsset" asp-items="@Model.Asset.Select(x=> new SelectListItem { Text = x.RegistrationNumber, Value = x.AssetID.ToString() })"  class="form-select">
+                            <option>Seçiniz</option>
+                        </select>*@
+                        <label>Zimmet Sahibi Kişi</label>
+                        <input asp-for="PersonnelID" type="text" class="form-control" />
+                        @*<label>Zimmet Çıkarma Nedeni</label>
+        <select asp-for="SelectedReason" asp-items="@Model.Reason.Select(x=> new SelectListItem { Text = x.AssetActionOptionName, Value = x.AssetActionOptionsID.ToString() })" class="form-select">
+            <option>Seçiniz</option>
+        </select>*@
+                        <label class="card-title my-2">Zimmet Türü</label>
+                        <select asp-for="SelectedOwnerType" asp-items="@Model.OwnerType.Select(x=> new SelectListItem { Text = x.OwnerTypeName, Value = x.OwnerTypeID.ToString() })" class="form-select">
+                            <option>Seçiniz</option>
+                        </select>
+                        <label class="card-title my-2">Zimmet Başlangıç Tarihi</label>
+                        <input asp-for="DebitStartDate" type="date" class="form-control" />
+                        <label class="card-title my-2">Zimmet Bitiş Tarihi</label>
+                        <input asp-for="DebitEndDate" type="date" class="form-control" />
+                        <label class="card-title my-2">Açıklama</label>
+                        <textarea asp-for="Note" class="form-control" style="height:100px"></textarea>
+                        <br />
+                        <input asp-route="Admin/Home/AssetDebit" type="submit" value="Zimmet Ata" class="btn btn-primary mt-4" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>

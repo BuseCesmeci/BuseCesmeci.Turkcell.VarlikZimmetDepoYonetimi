@@ -193,6 +193,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
             
         }
+
         public async Task<AssetAddDTO> GetAssetUpdateByIDAsync(int assetID)
         {
             var request = await _client.GetAsync("asset/" + assetID);

@@ -42,6 +42,7 @@ namespace VarlikZimmetDepoYonetimi.UI
                 option.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
+            services.AddDistributedMemoryCache();
 
             services.AddHttpClient<TokenProvider>(option =>
             {
@@ -111,7 +112,19 @@ namespace VarlikZimmetDepoYonetimi.UI
             {
                 option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
             });
+            services.AddHttpClient<AssetActionProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
+            services.AddHttpClient<OwnerTypeProvider>(option =>
+            {
+                option.BaseAddress = new Uri(Configuration["myBaseAdress"]);
+            });
 
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("Redis");                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
