@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VarlikZimmetDepoYonetimi.UI.Provider;
 
+
 namespace VarlikZimmetDepoYonetimi.UI
 {
     public class Startup
@@ -42,7 +43,7 @@ namespace VarlikZimmetDepoYonetimi.UI
                 option.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
-            services.AddDistributedMemoryCache();
+           // services.AddDistributedMemoryCache();
 
             services.AddHttpClient<TokenProvider>(option =>
             {
@@ -123,7 +124,7 @@ namespace VarlikZimmetDepoYonetimi.UI
 
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = Configuration.GetConnectionString("Redis");                
+                options.Configuration = Configuration.GetConnectionString("Redis");
             });
         }
 

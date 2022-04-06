@@ -10,7 +10,8 @@
 <div>
     <h5 class=@ViewBag.text>
         @ViewBag.location
-    </h5></div>
+    </h5>
+</div>
 
 <form method="post" asp-action="AssetDebit" asp-controller="Home">
     <div class="container py-5">
@@ -20,9 +21,9 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary mt-3">Zimmet Ata</h5>
                         <label>Asset</label>
-                        @*<select asp-for="SelectedAsset" asp-items="@Model.Asset.Select(x=> new SelectListItem { Text = x.RegistrationNumber, Value = x.AssetID.ToString() })"  class="form-select">
+                        <select asp-for="SelectedAsset" asp-items="@Model.Asset.Select(x=> new SelectListItem { Text = x.RegistrationNumber, Value = x.AssetID.ToString() })"  class="form-select">
                             <option>Seçiniz</option>
-                        </select>*@
+                        </select>
                         <label>Zimmet Sahibi Kişi</label>
                         <input asp-for="PersonnelID" type="text" class="form-control" />
                         @*<label>Zimmet Çıkarma Nedeni</label>

@@ -209,5 +209,28 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             }
 
         }
+
+        public async Task<string> AddDebitAssetIDAsync(DebitDTO debitDto)
+        {
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(debitDto));
+            jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            string result = "";
+            try
+            {
+                var responsePostValue = await _client.PostAsync("addasset", jsonConversion);
+                if (responsePostValue.IsSuccessStatusCode)
+                {
+                    await responsePostValue.Content.ReadAsStringAsync();
+                }
+                result = "Işlem tamamlandı.";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return result;
+        }
     }
 }

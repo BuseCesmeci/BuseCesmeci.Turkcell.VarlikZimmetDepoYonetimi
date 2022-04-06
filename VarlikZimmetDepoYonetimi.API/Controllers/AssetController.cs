@@ -83,7 +83,7 @@ namespace VarlikZimmetDepoYonetimi.API.Controllers
             //}
 
 
-         [HttpPut]
+        [HttpPut]
         [Route("~/api/updateasset")]
         public async Task<IActionResult> UPDATEAsync([FromBody] AssetDTO assetDto)
         {

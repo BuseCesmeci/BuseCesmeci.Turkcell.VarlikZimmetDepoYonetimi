@@ -42,7 +42,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
 
         public async Task<IActionResult> GetAsset() => View();
 
-
         [HttpGet]
         public async Task<IActionResult> AssetDebit()
         {
@@ -51,7 +50,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
             string location = "";
             string iscache = "";
 
-           // var ownertype = await _ownerTypeProvider.GetOwnerTypeAsync();
+         //   var ownertype = await _ownerTypeProvider.GetOwnerTypeAsync();
 
             string key = "ownerType_" + DateTime.Now.ToString("yyyyMMdd_hhmm");
             var cacheOwnerType = await _cache.GetRecordAsync<List<OwnerTypeDTO>>(key);
@@ -59,6 +58,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
             if (cacheOwnerType is null)
             {
                 cacheOwnerType = await _ownerTypeProvider.GetOwnerTypeAsync();
+                await _cache.SetRecordAsync<List<OwnerTypeDTO>>(key, cacheOwnerType);
                 location = $"API Data => {DateTime.Now}";
                 iscache = "";
             }
@@ -83,7 +83,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
         {
 
             var personnel = await _personnelProvider.GetAsync();
-
+           
             var controlPersonnel = personnel.FindAll(x => x.PersonnelID == debitDto.PersonnelID).Count();
 
             if (controlPersonnel == 0)
@@ -104,12 +104,12 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
                 }
                 debitDto.OwnerID = debitDto.PersonnelID;
             }
-            debitDto.AssetStatusID = 2;
+            
+            debitDto.AssetID = debitDto.SelectedAsset;
             var addOwner = await _ownerProvider.AddAssetOwnerAsync(debitDto); // tbl.assetowner insert
-
-            var addValue = await _statusProvider.AddAssetStatusAsync(debitDto);     // tbl.assetStatus insert
-
-
+            debitDto.StatuID = 2;
+            var addValue = await _statusProvider.AddAssetStatusAsync(debitDto);   // tbl.assetStatus insert
+                      
             return RedirectToAction("Admin/Home/AssetDebit");
         }
 

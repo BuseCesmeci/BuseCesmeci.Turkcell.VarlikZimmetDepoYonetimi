@@ -11,5 +11,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
         public int UpperID { get; set; }
         public bool UpperTeamMi { get; set; }
         public string Name { get; set; }
+        public int CompanyID { get; set; }
     }
 }
