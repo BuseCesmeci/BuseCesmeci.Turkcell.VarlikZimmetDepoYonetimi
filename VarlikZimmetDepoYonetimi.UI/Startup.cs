@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +30,7 @@ namespace VarlikZimmetDepoYonetimi.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<Startup>());
             // proje bazlý authentication
             //services.AddMvc(config =>
             //{
@@ -126,6 +127,7 @@ namespace VarlikZimmetDepoYonetimi.UI
             {
                 options.Configuration = Configuration.GetConnectionString("Redis");
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

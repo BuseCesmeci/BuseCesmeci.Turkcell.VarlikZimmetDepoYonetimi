@@ -106,7 +106,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
             }
             
             debitDto.AssetID = debitDto.SelectedAsset;
-            var addOwner = await _ownerProvider.AddAssetOwnerAsync(debitDto); // tbl.assetowner insert
+            var addOwner = await _ownerProvider.AddAssetOwnerAsync(debitDto);  // tbl.assetowner insert
             debitDto.StatuID = 2;
             var addValue = await _statusProvider.AddAssetStatusAsync(debitDto);   // tbl.assetStatus insert
                       

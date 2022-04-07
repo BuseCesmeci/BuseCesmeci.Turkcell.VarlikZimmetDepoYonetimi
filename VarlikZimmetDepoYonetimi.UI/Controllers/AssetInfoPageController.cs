@@ -24,17 +24,31 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> RegistrationInfo(int id) // kayıt bilgileri
+        public async Task<IActionResult> RegistrationInfo() // kayıt bilgileri
         {
-            id = 27;
+           
+            var assetlist = await _assetProvider.GetAssetAsync();
 
-            var uptvalue = await _assetProvider.GetAssetUpdateByIDAsync(id);
+            var updvalue = await _assetProvider.GetAssetDetailAsync();
+           
+            //var getupdasset = await _assetProvider.GetAssetAsync();
+            var update = new AssetUpdateDTO();
+            update.Asset = assetlist;
+            update.AssetGroup = updvalue.AssetGroup;
+            update.AssetType = updvalue.AssetType;
+            update.Brand = updvalue.Brand;
+            update.Model = updvalue.Model;
+            update.Currency = updvalue.Currency;
+            // update.Asset = getupdasset;
 
-            return View(uptvalue);
+            
+
+            return View(update);
 
         }
+
         [HttpPost]
-        public async Task<IActionResult> RegistrationInfo(AssetAddDTO assetDto) // kayıt bilgileri
+        public async Task<IActionResult> RegistrationInfo(AssetUpdateDTO assetDto) // kayıt bilgileri
         {
             var value = await _assetProvider.GetAssetDetailAsync();
             assetDto.AssetType = value.AssetType;
@@ -44,12 +58,12 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
 
             //var value = assetVm.AssetType;
             var request = new AssetDTO();
-            request.AssetID = assetDto.AssetID;
+           // request.AssetID = assetDto.AssetID;
             request.AssetTypeID = assetDto.SelectedAssetType;
             request.BrandModelID = assetDto.SelectedBrand;
             request.Cost = assetDto.Cost;
             request.Description = assetDto.Description;
-            request.RegistrationNumber = assetDto.RegistrationNumber;
+           // request.RegistrationNumber = assetDto.RegistrationNumber;
             request.RetireDate = DateTime.Now;
 
             //var barcode = new AssetBarcodeDTO();
@@ -68,11 +82,18 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         {
             return View();
         }
-        public IActionResult RegistrationHistory() // Kayıt Geçmişi (Log)
+        public IActionResult RegistrationHistory() // Kayıt Geçmişi ()
         {
             return View();
         }
+ 
         public IActionResult FormHistory() // Form Geçmişi (??)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FormHistory(string a) // Form Geçmişi ()
         {
             return View();
         }
