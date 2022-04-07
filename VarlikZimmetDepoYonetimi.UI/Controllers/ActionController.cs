@@ -51,12 +51,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         [HttpGet]
         public IActionResult TakeOn() => View();    // ustlen
 
-        //[HttpPost]
-        //public IActionResult TakeOn() // ustlen
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
         public async Task<IActionResult> ToConsume()    // tüket
         {
@@ -72,7 +66,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
             // GetCustomer
 
             var addValue = await _customerProvider.AddToConsumeAsync(consumeDTO);
-
 
             return View();
         }

@@ -52,6 +52,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
 
          //   var ownertype = await _ownerTypeProvider.GetOwnerTypeAsync();
 
+            // Redis => Zimmet sahibi tipi (ownertype) dropdownu doldurulması 
+
             string key = "ownerType_" + DateTime.Now.ToString("yyyyMMdd_hhmm");
             var cacheOwnerType = await _cache.GetRecordAsync<List<OwnerTypeDTO>>(key);
 
@@ -91,23 +93,23 @@ namespace VarlikZimmetDepoYonetimi.UI.Areas.Admin.Controllers
                 return null;
             }
             else
-            {
+            {   
                 var controlPersonnelTeam = personnel.FindAll(x => x.PersonnelID == debitDto.PersonnelID && x.UpperTeamMi == true).Count();
 
                 if (controlPersonnelTeam == 0)
                 {
-                    debitDto.OwnerTypeID = 1;
+                    debitDto.OwnerTypeID = 1;   // personel
                 }
                 else
                 {
-                    debitDto.OwnerTypeID = 2;
+                    debitDto.OwnerTypeID = 2;   // ekip
                 }
                 debitDto.OwnerID = debitDto.PersonnelID;
             }
             
             debitDto.AssetID = debitDto.SelectedAsset;
             var addOwner = await _ownerProvider.AddAssetOwnerAsync(debitDto);  // tbl.assetowner insert
-            debitDto.StatuID = 2;
+            debitDto.StatuID = 2;   // zimmet statu
             var addValue = await _statusProvider.AddAssetStatusAsync(debitDto);   // tbl.assetStatus insert
                       
             return RedirectToAction("Admin/Home/AssetDebit");

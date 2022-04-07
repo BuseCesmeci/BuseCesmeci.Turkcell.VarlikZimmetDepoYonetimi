@@ -69,7 +69,6 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
                 assetVm.Model  = value.Model;
                 assetVm.Currency = value.Currency;
 
-                //var value = assetVm.AssetType;
                 var request = new AssetDTO();
                 request.AssetID = assetVm.AssetID;
                 request.AssetGroupID = assetVm.SelectedAssetGroup;
@@ -105,16 +104,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
            
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> AddAsset(AssetDTO assetDto) // varlık ekle -yeni kayıt-
-        //{
-
-        //    assetDto.RetireDate = DateTime.Now;
-        //    await _assetProvider.AddAsync(assetDto);
-        //    return View();
-        //}
-       // [HttpPost]
-        public IActionResult AddAssetWithoutBarcode() // barkodsuz varlık ekle -yeni kayıt- 
+      
+        public IActionResult AddAssetWithoutBarcode()  
         {
             return View();
         }
@@ -131,22 +122,8 @@ namespace VarlikZimmetDepoYonetimi.UI.Controllers
         public async Task<IActionResult> AllAsset() // tüm varlıklar
         {
 
-            // var asset = await _assetProvider.GetAsync();
-            // var barcode = await _barcodeProvider.GetBarcodeAsync();
-
-            // var getasset = new GetAssetTableDTO();
-            //// getasset.AssetID = asset.AssetID;
-            // getasset.RegistrationNumber = asset.RegistrationNumber;
-            // getasset.Barcode = barcode.Barcode;
-
             var value = await _tableProvider.GetAllAssetTableAsync();
             var list = new GetAssetTableDTO();
-
-            //list.RegistrationNumber = value.RegistrationNumber;
-            //list.Barcode = value.Barcode;
-            //list.AssetTypeName = value.AssetTypeName;
-            //list.AssetPrice = value.AssetPrice;
-            //list.BrandModelName = value.BrandModelName;
 
             return View(value);
         }
