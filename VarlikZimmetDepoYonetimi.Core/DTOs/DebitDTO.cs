@@ -8,8 +8,16 @@ namespace VarlikZimmetDepoYonetimi.Core.DTOs
 {
     public class DebitDTO : AssetStatusDTO
     {
-        public List<AssetActionOptionsDTO> ActionOptions { get; set; }
-        public int SelectedActionOptions { get; set; }
+        public List<AssetActionOptionsDTO> Reason { get; set; }
+        public int SelectedReason { get; set; }
+
+        public List<OwnerTypeDTO> OwnerType { get; set; }
+        public int SelectedOwnerType { get; set; }
+
+        public List<AssetDTO> Asset { get; set; }
+        public int SelectedAsset { get; set; }
+
+        public int CompanyID { get; set; }
         public int AssetOwnerID { get; set; }
         public int? OwnerID { get; set; }
         public int OwnerTypeID { get; set; }
@@ -17,6 +25,5 @@ namespace VarlikZimmetDepoYonetimi.Core.DTOs
         public DateTime DebitStartDate { get; set; } = DateTime.Now;
         public DateTime? DebitEndDate { get; set; }
         public string Description { get; set; }
-
     }
 }

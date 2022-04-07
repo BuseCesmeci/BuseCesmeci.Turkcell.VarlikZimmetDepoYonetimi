@@ -1,4 +1,4 @@
-﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetAddDTO
+﻿@model VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetUpdateDTO
 
 @{
     Layout = "~/Views/Shared/_AssetInfo.cshtml";
@@ -7,12 +7,16 @@
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
 
-<form asp-action="RegistrationInfo" asp-controller="AssetInfoPage">
+<form asp-action="RegistrationInfo" asp-controller="AssetInfoPage" method="post">
     <div>
         <div class="container px-4">
             <div class="row">
                 <div class="col-md-12 table-responsive mt-4">
                     <p class="text-primary">Varlık No :</p>
+                    <select asp-for="SelectedAsset" asp-items="@Model.Asset.Select(x=> new SelectListItem { Text = x.RegistrationNumber, Value = x.AssetID.ToString() })" class="form-control">
+                        <option>Varlık Seçiniz</option>
+                    </select>
+                    <br />
                     <table class="table table-bordered ">
                         <thead style="background-color:paleturquoise">
                             <tr>
@@ -27,6 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr>
                                 <td>ornek1</td>
                                 <td>ornek2</td>
@@ -37,6 +42,7 @@
                                 <td>ornek7</td>
                                 <td>ornek8</td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -48,8 +54,9 @@
         </div>
     </div>
     <div class="container py-5">
+
         <div class="row">
-            <div class="col-md-6 mt-3 form-group">
+            <div class="col-md-6 mt-3 form-group">             
                 <div class="row">
                     <div class="form-check form-switch py-3 col-md-4">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -66,19 +73,26 @@
                 </div>
                 <br />
                 <label>Ürün Tipi</label>
-                <select asp-for="SelectedAssetType" asp-items="@Model.AssetType == null ? null : @Model.AssetType.Select(x=> new SelectListItem { Text = x.AssetTypeName, Value = x.AssetTypeID.ToString() })" class="form-control" />
+                <select asp-for="SelectedAssetType" asp-items="@Model.AssetType.Select(x=> new SelectListItem { Text = x.AssetTypeName, Value = x.AssetTypeID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Marka</label>
-                <select asp-for="SelectedBrand" asp-items="@Model.Brand == null ? null : @Model.Brand.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString()})"  class="form-control" />
+                <select asp-for="SelectedBrand" asp-items="@Model.Brand.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString()})" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Model</label>
-                <select asp-for="SelectedModel" asp-items="@Model.Model == null ? null : @Model.Model.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString() })" type="text" class="form-control" />
+                <select asp-for="SelectedModel" asp-items="@Model.Model.Select(x=> new SelectListItem { Text = x.BrandModelName, Value = x.BrandModelID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Garantili Mi?</label>
                 <input type="text" class="form-control" />
                 <br />
                 <label>Açıklama</label>
-                <textarea asp-for="Description" type="text" class="form-control" style="height:100px" />
+                <textarea asp-for="Description" type="text" class="form-control" style="height:100px" /></textarea>
+
             </div>
             <div class="col-md-6 form-group">
                 <label class="mt-3">Giriş Tarihi</label>
@@ -91,15 +105,19 @@
                 <input asp-for="Cost" type="text" class="form-control" />
                 <br />
                 <label>Para Birimi</label>
-                <select asp-for="SelectedCurrency" asp-items="@Model.Currency == null ? null : @Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-control" />
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <br />
                 <label>Güncel Fiyatı</label>
                 <input asp-for="AssetPrice" type="text" class="form-control" />
                 <br />
                 <label>Guncel Fiyat Para Birimi</label>
-                <select asp-for="SelectedCurrency" asp-items="@Model.Currency == null ? null : @Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" type="text" class="form-control" />
+                <select asp-for="SelectedCurrency" asp-items="@Model.Currency.Select(x=> new SelectListItem { Text = x.CurrencyName, Value = x.CurrencyID.ToString() })" class="form-select">
+                    <option>Seçiniz</option>
+                </select>
                 <div class="mt-3">
-                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    <input type="submit" value="Guncelle" class="btn btn-primary" />
                 </div>
             </div>
         </div>

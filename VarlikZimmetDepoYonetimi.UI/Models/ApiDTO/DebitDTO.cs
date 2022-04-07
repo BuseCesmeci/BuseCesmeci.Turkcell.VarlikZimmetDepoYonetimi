@@ -15,7 +15,7 @@ namespace VarlikZimmetDepoYonetimi.UI.Models.ApiDTO
 
         public List<AssetDTO> Asset { get; set; }
         public int SelectedAsset { get; set; }
-
+        public int CompanyID { get; set; }
         public int AssetOwnerID { get; set; }
         public int? OwnerID { get; set; }
         public int OwnerTypeID { get; set; }

@@ -1,4 +1,4 @@
-﻿@*@model List<VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.AssetDTO>*@
+﻿
 @model List<VarlikZimmetDepoYonetimi.UI.Models.ApiDTO.GetAssetTableDTO>
 @{
     Layout = "~/Views/Shared/_AssetList.cshtml";
@@ -15,7 +15,7 @@
                 <span class="text-primary"><b>Tüm Varlıklar</b></span>
             </div>
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
                             <th>Kayıt Numarası</th>
@@ -30,14 +30,14 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.RegistrationNumber</td>
-                                <td>@item.Barcode</td>
-                                <td>@item.AssetGroupName</td>
-                                <td>@item.AssetTypeName</td>
-                                <td>@item.AssetPrice</td>
-                                <td>@item.BrandModelName</td>
-                            </tr>
+                        <tr>
+                            <td>@item.RegistrationNumber</td>
+                            <td>@item.Barcode</td>
+                            <td>@item.AssetGroupName</td>
+                            <td>@item.AssetTypeName</td>
+                            <td>@item.AssetPrice</td>
+                            <td>@item.BrandModelName</td>
+                        </tr>
 
                         }
                     </tbody>
@@ -47,7 +47,7 @@
     </form>
 </div>
 
-<script>
+<script type="text/javascript">
 
 </script>
 

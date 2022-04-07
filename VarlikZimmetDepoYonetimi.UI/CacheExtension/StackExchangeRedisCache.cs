@@ -9,7 +9,6 @@ namespace VarlikZimmetDepoYonetimi.UI.CacheExtension
 {
     public static class StackExchangeRedisCache
     {
-
         public static async Task SetRecordAsync<T>(this IDistributedCache cache, string recordKey,
             T recordValue,
             TimeSpan? absolutTime = null,

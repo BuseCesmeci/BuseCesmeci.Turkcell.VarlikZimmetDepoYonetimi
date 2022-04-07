@@ -36,8 +36,7 @@ namespace VarlikZimmetDepoYonetimi.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
-         //   services.AddDbContext<AuthContext>(a => a.UseSqlServer(Configuration.GetConnectionString("DefaultConn")));           
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);          
             services.AddDbContext<AssetStoreManagmentContext>(options=> options.UseSqlServer($"Data Source=.; DataBase = AssetStoreManagment; Integrated Security = True"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -102,6 +101,7 @@ namespace VarlikZimmetDepoYonetimi.API
             app.UseHttpsRedirection();
             app.UseCors();
             app.UseCors(builder => builder.WithOrigins("http://localhost:31994").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:5002").AllowAnyHeader());
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();            

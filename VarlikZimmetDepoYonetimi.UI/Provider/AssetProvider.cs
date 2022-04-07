@@ -194,20 +194,45 @@ namespace VarlikZimmetDepoYonetimi.UI.Provider
             
         }
 
-        public async Task<AssetAddDTO> GetAssetUpdateByIDAsync(int assetID)
+        public async Task<List<AssetUpdateDTO>> GetAssetUpdateByIDAsync()
         {
-            var request = await _client.GetAsync("asset/" + assetID);
+            var request = await _client.GetAsync("asset");
 
             if (request.IsSuccessStatusCode)
             {
                 var content = await request.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<AssetAddDTO>(content);
+                //return JsonConvert.DeserializeObject<AssetUpdateDTO>(content);
+                var a = JsonConvert.DeserializeObject<List<AssetUpdateDTO>>(content);
+                return null;
             }
             else
             {
                 return null;
             }
 
+        }
+
+        public async Task<string> AddDebitAssetIDAsync(DebitDTO debitDto)
+        {
+            var jsonConversion = new StringContent(JsonConvert.SerializeObject(debitDto));
+            jsonConversion.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            string result = "";
+            try
+            {
+                var responsePostValue = await _client.PostAsync("addasset", jsonConversion);
+                if (responsePostValue.IsSuccessStatusCode)
+                {
+                    await responsePostValue.Content.ReadAsStringAsync();
+                }
+                result = "Işlem tamamlandı.";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return result;
         }
     }
 }
